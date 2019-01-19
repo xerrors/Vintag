@@ -1,6 +1,8 @@
 # Vue 学习历程
 `Date: 2019/1/19`
 
+模板来自于：https://github.com/PanJiaChen/vue-admin-template/tree/master/src
+
 ## 思路
 
 ### 登录验证
