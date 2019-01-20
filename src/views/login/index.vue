@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <!-- 粒子特效插件 -->
     <vue-particles
       color="#6495ED"
       :particleOpacity="0.8"
@@ -18,6 +19,7 @@
       clickMode="push"
       class="particles-js"
     />
+    <!-- 登陆卡片 -->
     <el-card shadow="hover" class="login-card">
       <el-form
         ref="loginForm"
@@ -27,26 +29,29 @@
         auto-complete="on"
         label-position="left"
       >
-        <h3 class="title">Vintag 数据可视化</h3>
+      <!-- 标题 -->
+        <h4 class="title">Vintag 数据可视化</h4>
+        <!-- 用户名 -->
         <el-form-item prop="username">
           <span class="svg-container">
             <svg-icon icon-class="user"/>
           </span>
           <el-input
-            v-model="loginForm.username"
+            v-model.trim="loginForm.username"
             name="username"
             type="text"
             auto-complete="off"
             placeholder="username"
           />
         </el-form-item>
+        <!-- 密码 -->
         <el-form-item prop="password">
           <span class="svg-container">
             <svg-icon icon-class="password"/>
           </span>
           <el-input
             :type="pwdType"
-            v-model="loginForm.password"
+            v-model.trim="loginForm.password"
             name="password"
             auto-complete="off"
             placeholder="password"
@@ -56,12 +61,13 @@
             <svg-icon icon-class="eye"/>
           </span>
         </el-form-item>
+        <!-- 登陆按钮 -->
         <el-form-item>
           <el-button
             :loading="loading"
             style="width:100%;"
             @click.native.prevent="handleLogin"
-          >Sign in</el-button>
+          >登陆</el-button>
         </el-form-item>
       </el-form>
     </el-card>

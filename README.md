@@ -9,7 +9,7 @@
 > 思路
 > - 得益于vue的数据双向绑定，让我们不用操作DOM就能边输入边验证字符串合法性
 > - 利用axios实现前后端的数据交互
-> - 利用jsonwebtoken实现登录验证，结合vue-router的beforeEnter导航钩子在跳转前拦截验证access_token的有效性
+> - 利用jsonwebtoken实现登录验证，结合vue-router的导航钩子在跳转前拦截验证access_token的有效性
 
 *参考简书文章https://www.jianshu.com/p/c51ffebeceed*
 
@@ -29,7 +29,7 @@
 - 【界面错误】登录与注册按钮不能两端对齐。
 - 【界面错误】当密码输入错误时，错误提示太大。
 
-## 开发日志\
+## 开发日志
 #### 2019.1.19
 最终还是决定使用相对来说功能与遍历程度均衡的 vue-charts
 - 采用 vue-admin-templete
