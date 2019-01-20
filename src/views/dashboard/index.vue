@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name:{{ name }}</div>
+    <!-- <div class="dashboard-text">name:{{ name }}</div>
     <div class="dashboard-text">roles:
       <span v-for="role in roles" :key="role">{{ role }}</span>
-    </div>
+    </div> -->
     <demo-charts/>
   </div>
 </template>
@@ -32,5 +32,12 @@ export default {
     font-size: 30px;
     line-height: 46px;
   }
+}
+.charts {
+  border: 2px solid #42b983;;
+  width: 300px;
+  height: 450px;
+  margin: 20px;
+  float: left;
 }
 </style>
