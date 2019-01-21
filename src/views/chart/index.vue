@@ -1,12 +1,12 @@
 <template>
   <div class="charts chart-lefts">
-    <h3 style="text-align: center">vue2.0中使用echart</h3>
-    <div id="secondCharts" style=" width:100%; height:350px;"/>
+    <div id="secondCharts" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
+
 import echarts from "echarts";
 import "echarts/theme/macarons.js";
 export default {
@@ -16,30 +16,7 @@ export default {
     return {
       // 初始化空对象
       chart: null,
-      // 初始化图表配置
-      opinion: ["A", "B", "C", "D", "E"],
-      opinionData: [
-        {
-          value: 26,
-          name: "A"
-        },
-        {
-          value: 31,
-          name: "B"
-        },
-        {
-          value: 18,
-          name: "C"
-        },
-        {
-          value: 28,
-          name: "D"
-        },
-        {
-          value: 21,
-          name: "E"
-        }
-      ]
+
     };
   },
   methods: {
@@ -50,46 +27,263 @@ export default {
       // 皮肤添加同一般使用方式
       this.chart.showLoading();
       this.chart.setOption({
-        title: {
-          text: "此处为标题",
-          subtext: "副标题",
-          x: "center"
-        },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%):"
-        },
-        legend: {
-          x: "center",
-          y: "bottom",
-          data: this.opinion
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true
+          backgroundColor: "#394056",
+          title: {
+            text: "请求数",
+            textStyle: {
+              fontWeight: "normal",
+              fontSize: 16,
+              color: "#F1F1F3"
             },
-            magicType: {
-              show: true,
-              type: ["pie"]
+            left: "6%"
+          },
+          tooltip: {
+            trigger: "axis",
+            axisPointer: {
+              lineStyle: {
+                color: "#57617B"
+              }
             }
-          }
-        },
-        calculable: true,
-        series: [
-          {
-            name: "种类",
-            type: "pie",
-            // 内圆半径，外圆半径
-            radius: [30, 100],
-            // 位置，左右，上下
-            center: ["50%", "50%"],
-            roseType: "area",
-            data: this.opinionData // this
-          }
-        ]
-      });
+          },
+          legend: {
+            icon: "rect",
+            itemWidth: 14,
+            itemHeight: 5,
+            itemGap: 13,
+            data: ["移动", "电信", "联通"],
+            right: "4%",
+            textStyle: {
+              fontSize: 12,
+              color: "#F1F1F3"
+            }
+          },
+          grid: {
+            left: "3%",
+            right: "4%",
+            bottom: "3%",
+            containLabel: true
+          },
+          xAxis: [
+            {
+              type: "category",
+              boundaryGap: false,
+              axisLine: {
+                lineStyle: {
+                  color: "#57617B"
+                }
+              },
+              data: [
+                "13:00",
+                "13:05",
+                "13:10",
+                "13:15",
+                "13:20",
+                "13:25",
+                "13:30",
+                "13:35",
+                "13:40",
+                "13:45",
+                "13:50",
+                "13:55"
+              ]
+            },
+            {
+              axisPointer: {
+                show: false
+              },
+              axisLine: {
+                lineStyle: {
+                  color: "#57617B"
+                }
+              },
+              axisTick: {
+                show: false
+              },
+
+              position: "bottom",
+              offset: 20,
+              data: [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                {
+                  value: "周六",
+                  textStyle: {
+                    align: "left"
+                  }
+                },
+                "周日"
+              ]
+            }
+          ],
+          yAxis: [
+            {
+              type: "value",
+              name: "单位（%）",
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                lineStyle: {
+                  color: "#57617B"
+                }
+              },
+              axisLabel: {
+                margin: 10,
+                textStyle: {
+                  fontSize: 14
+                }
+              },
+              splitLine: {
+                lineStyle: {
+                  color: "#57617B"
+                }
+              }
+            }
+          ],
+          series: [
+            {
+              name: "移动",
+              type: "line",
+              smooth: true,
+              symbol: "circle",
+              symbolSize: 5,
+              showSymbol: false,
+              lineStyle: {
+                normal: {
+                  width: 1
+                }
+              },
+              areaStyle: {
+                normal: {
+                  color: new echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    [
+                      {
+                        offset: 0,
+                        color: "rgba(137, 189, 27, 0.3)"
+                      },
+                      {
+                        offset: 0.8,
+                        color: "rgba(137, 189, 27, 0)"
+                      }
+                    ],
+                    false
+                  ),
+                  shadowColor: "rgba(0, 0, 0, 0.1)",
+                  shadowBlur: 10
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgb(137,189,27)",
+                  borderColor: "rgba(137,189,2,0.27)",
+                  borderWidth: 12
+                }
+              },
+              data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
+            },
+            {
+              name: "电信",
+              type: "line",
+              smooth: true,
+              symbol: "circle",
+              symbolSize: 5,
+              showSymbol: false,
+              lineStyle: {
+                normal: {
+                  width: 1
+                }
+              },
+              areaStyle: {
+                normal: {
+                  color: new echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    [
+                      {
+                        offset: 0,
+                        color: "rgba(0, 136, 212, 0.3)"
+                      },
+                      {
+                        offset: 0.8,
+                        color: "rgba(0, 136, 212, 0)"
+                      }
+                    ],
+                    false
+                  ),
+                  shadowColor: "rgba(0, 0, 0, 0.1)",
+                  shadowBlur: 10
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgb(0,136,212)",
+                  borderColor: "rgba(0,136,212,0.2)",
+                  borderWidth: 12
+                }
+              },
+              data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
+            },
+            {
+              name: "联通",
+              type: "line",
+              smooth: true,
+              symbol: "circle",
+              symbolSize: 5,
+              showSymbol: false,
+              lineStyle: {
+                normal: {
+                  width: 1
+                }
+              },
+              areaStyle: {
+                normal: {
+                  color: new echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    [
+                      {
+                        offset: 0,
+                        color: "rgba(219, 50, 51, 0.3)"
+                      },
+                      {
+                        offset: 0.8,
+                        color: "rgba(219, 50, 51, 0)"
+                      }
+                    ],
+                    false
+                  ),
+                  shadowColor: "rgba(0, 0, 0, 0.1)",
+                  shadowBlur: 10
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: "rgb(219,50,51)",
+                  borderColor: "rgba(219,50,51,0.2)",
+                  borderWidth: 12
+                }
+              },
+              data: [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 165, 122]
+            }
+          ]
+        });
+
       this.chart.hideLoading();
     }
   },

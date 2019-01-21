@@ -35,7 +35,7 @@ export default {
 }
 .charts {
   border: 2px solid #42b983;;
-  width: 300px;
+  width: 600px;
   height: 450px;
   margin: 20px;
   float: left;
