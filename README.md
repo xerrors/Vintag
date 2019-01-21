@@ -1,5 +1,6 @@
-# Vue 学习历程
-`Date: 2019/1/19`
+# Vintag 
+`Date: 2019/1/21`
+[DemoLink](www.xerrors.fun)
 
 模板来自于：https://github.com/PanJiaChen/vue-admin-template/tree/master/src
 
