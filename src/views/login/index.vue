@@ -67,7 +67,7 @@
             :loading="loading"
             style="width:100%;"
             @click.native.prevent="handleLogin"
-          >登陆</el-button>
+          >登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -175,12 +175,6 @@ $font_light: #eee;
       }
     }
   }
-  .el-form-item {
-    // border: 1px solid rgba(255, 255, 255, 0.1);
-    // background: rgba(0, 0, 0, 0.1);
-    // border-radius: 5px;
-    // color: #454545;
-  }
 }
 </style>
 
@@ -195,15 +189,6 @@ $font_light: #eee;
   height: 100%;
   width: 100%;
   background-color: $bg;
-  .login-form {
-    // position: absolute;
-    // left: 0;
-    // right: 0;
-    // width: 400px;
-    // max-width: 100%;
-    // padding: 35px 35px 15px 35px;
-    // margin: 120px auto;
-  }
   .tips {
     font-size: 14px;
     color: #fff;
@@ -240,13 +225,31 @@ $font_light: #eee;
   }
   .login-card {
     position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
+    margin: auto;
     width: 400px;
     max-width: 100%;
+    height: 380px;
     padding: 35px 35px 15px 35px;
-    margin: 120px auto;
+    opacity: 0;
+    // 设置过渡动画
+    animation-name: slideUp;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
   }
+  @keyframes slideUp {
+      0% {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 }
 #particles-js {
   position: absolute;
