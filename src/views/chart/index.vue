@@ -1,6 +1,6 @@
 <template>
   <div class="charts chart-lefts">
-    <h3>vue2.0中使用echart</h3>
+    <h3 style="text-align: center">vue2.0中使用echart</h3>
     <div id="secondCharts" style=" width:100%; height:350px;"/>
   </div>
 </template>
