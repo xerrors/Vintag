@@ -11,11 +11,14 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import router from './router'
 import store from './store'
-// import ECharts from 'vue-echarts/components/ECharts'
 import '@/icons' // icon
 import '@/permission' // permission control
-
 import VueParticles from 'vue-particles'
+// 引入主题文件
+import 'echarts/theme/macarons'
+import 'echarts/theme/vintage'
+import 'echarts/theme/shine'
+
 Vue.use(VueParticles)
 
 Vue.use(ElementUI, { locale })

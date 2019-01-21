@@ -6,9 +6,7 @@
 
 <script>
 /* eslint-disable */
-
 import echarts from "echarts";
-import "echarts/theme/macarons.js";
 export default {
   name: "secondCharts",
   components: {},
@@ -22,14 +20,15 @@ export default {
       ],
       axisData: {
         x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-      }
+      },
+      theme: this.$store.getters.theme
     };
   },
   methods: {
     // 绘图
     drawGraph(id) {
       // 绘图方法
-      this.chart = echarts.init(document.getElementById(id), "shine");
+      this.chart = echarts.init(document.getElementById(id), this.theme);
       // 皮肤添加同一般使用方式
       this.chart.showLoading();
       this.chart.setOption({
