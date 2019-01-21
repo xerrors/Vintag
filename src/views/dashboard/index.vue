@@ -11,7 +11,7 @@
 <script>
 /* eslint-disable */ 
 import { mapGetters } from "vuex";
-import demoCharts from "@/views/chart/index";
+import demoCharts from "@/views/charts/index";
 export default {
   name: "Dashboard",
   components: {
