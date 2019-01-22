@@ -29,7 +29,7 @@
         auto-complete="on"
         label-position="left"
       >
-      <!-- 标题 -->
+        <!-- 标题 -->
         <h4 class="title">Vintag 数据可视化</h4>
         <!-- 用户名 -->
         <el-form-item prop="username">
@@ -63,17 +63,18 @@
         </el-form-item>
         <!-- 登陆按钮 -->
         <el-form-item>
-          <el-button
-            :loading="loading"
-            style="width:100%;"
-            @click.native.prevent="handleLogin"
-          >登录</el-button>
+          <el-button :loading="loading" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
         </el-form-item>
         <el-form-item>
-          <el-button type="text" class="text-btn" size=small @click="forgetPasswd">忘记密码</el-button>
-          <el-button type="text" class="text-btn" size=small @click="register" style="float: right">没有账户？注册</el-button>
+          <el-button type="text" class="text-btn" size="small" @click="forgetPasswd">忘记密码</el-button>
+          <el-button
+            type="text"
+            class="text-btn"
+            size="small"
+            @click="register"
+            style="float: right"
+          >没有账户？注册</el-button>
         </el-form-item>
-
       </el-form>
     </el-card>
   </div>
@@ -81,7 +82,7 @@
 
 <script>
 import { isvalidUsername } from "@/utils/validate";
-
+import axios from "axios";
 export default {
   name: "Login",
   data() {
@@ -131,6 +132,7 @@ export default {
         this.pwdType = "password";
       }
     },
+    // 执行用户登录操作
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
@@ -151,14 +153,14 @@ export default {
       });
     },
     forgetPasswd() {
-        this.$alert('这个我也没有办法啊', '忘记密码', {
-          confirmButtonText: '确定',
-        });
+      this.$alert("这个我也没有办法啊", "忘记密码", {
+        confirmButtonText: "确定"
+      });
     },
     register() {
-        this.$alert('功能开发中。。。', '用户注册', {
-          confirmButtonText: '确定',
-        });
+      this.$alert("功能开发中。。。", "用户注册", {
+        confirmButtonText: "确定"
+      });
     }
   }
 };
@@ -199,7 +201,7 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 $font_dark: #777;
 $font_light: #eee;
-$ele_blue: #409EFF;
+$ele_blue: #409eff;
 .login-container {
   position: fixed;
   height: 100%;
@@ -263,15 +265,15 @@ $ele_blue: #409EFF;
     }
   }
   @keyframes slideUp {
-      0% {
-        transform: translateY(100px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
     }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 }
 #particles-js {
   position: absolute;
