@@ -69,6 +69,11 @@
             @click.native.prevent="handleLogin"
           >登录</el-button>
         </el-form-item>
+        <el-form-item>
+          <el-button type="text" class="text-btn" size=small @click="forgetPasswd">忘记密码</el-button>
+          <el-button type="text" class="text-btn" size=small @click="register" style="float: right">没有账户？注册</el-button>
+        </el-form-item>
+
       </el-form>
     </el-card>
   </div>
@@ -144,6 +149,28 @@ export default {
           return false;
         }
       });
+    },
+    forgetPasswd() {
+        this.$alert('这是一段内容', '标题名称', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+    },
+    register() {
+        this.$alert('这是一段内容', '标题名称', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
     }
   }
 };
@@ -184,6 +211,7 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 $font_dark: #777;
 $font_light: #eee;
+$ele_blue: #409EFF;
 .login-container {
   position: fixed;
   height: 100%;
@@ -232,13 +260,19 @@ $font_light: #eee;
     margin: auto;
     width: 400px;
     max-width: 100%;
-    height: 380px;
+    height: 400px;
     padding: 35px 35px 15px 35px;
     opacity: 0;
     // 设置过渡动画
     animation-name: slideUp;
     animation-duration: 2s;
     animation-fill-mode: forwards;
+  }
+  .text-btn {
+    color: $font_dark;
+    :hover {
+      color: $ele_blue;
+    }
   }
   @keyframes slideUp {
       0% {
