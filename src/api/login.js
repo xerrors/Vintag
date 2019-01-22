@@ -25,3 +25,19 @@ export function logout() {
     method: 'post'
   })
 }
+
+// userInfo
+// {
+//   username: "username"
+//   password: "password"
+//   realname: "realname"
+//   telephone: "telephone"
+//   email: "email"
+// }
+export function register(userInfo) {
+  return request({
+    url: '/user/register',
+    method: 'post',
+    data: userInfo
+  })
+}
