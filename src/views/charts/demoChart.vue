@@ -1,6 +1,6 @@
 <template>
-  <div class="charts chart-lefts">
-    <div id="secondCharts" style=" width:100%; height:100%;"/>
+  <div class="charts chart-left">
+    <div id="demoChart" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 /* eslint-disable */
 import echarts from "echarts";
 export default {
-  name: "secondCharts",
+  name: "demoChart",
   components: {},
   data() {
     return {
@@ -20,7 +20,8 @@ export default {
       ],
       axisData: {
         x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-      }
+      },
+      legend: ["移动", "电信", "联通"]
     };
   },
   computed: {
@@ -39,13 +40,9 @@ export default {
           trigger: "axis"
         },
         legend: {
-          icon: "rect",
-          itemWidth: 14,
-          itemHeight: 5,
-          itemGap: 13,
-          data: ["移动", "电信", "联通"],
-          right: "4%",
-          top: "20px"
+          x: "center",
+          data: this.legend,
+          bottom: "10px"
         },
         xAxis: [
           {
@@ -102,7 +99,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      this.drawGraph("secondCharts");
+      this.drawGraph("demoChart");
     });
   }
 };

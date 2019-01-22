@@ -1,15 +1,18 @@
 <template>
   <div>
-    <demo-charts/>
+    <demo-chart/>
+    <demo-circle/>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import demoCharts from "@/views/charts/demoChart";
+import demoChart from "@/views/charts/demoChart";
+import demoCircle from "@/views/charts/demoCircle";
 export default {
   components: {
-    demoCharts,
+    demoChart,
+    demoCircle
   }
 };
 </script>
