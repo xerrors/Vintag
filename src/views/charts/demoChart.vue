@@ -27,25 +27,9 @@ export default {
   computed: {
     theme() {
       return this.$store.getters.theme;
-    }
-  },
-  watch: {
-    theme() {
-      console.log("watch changed!");
-      this.drawGraph("secondCharts");
-    }
-  },
-  methods: {
-    // 绘图
-    drawGraph(id) {
-      // 绘图方法
-      console.log("method changed!");
-      this.chart = echarts.init(document.getElementById(id), this.theme);
-      // 皮肤添加同一般使用方式
-      console.log("init changed!");
-      this.chart.showLoading();
-      console.log("option changed!");
-      this.chart.setOption({
+    },
+    options() {
+      return {
         // backgroundColor: "#394056",
         title: {
           text: "这个是标题好吧",
@@ -82,8 +66,20 @@ export default {
           this.makeSeries("电信", 1),
           this.makeSeries("联通", 2)
         ]
-      });
-      console.log("finish changed!");
+      }
+    }
+  },
+  watch: {
+    theme() {
+      console.log("watch changed!");
+      this.drawGraph("secondCharts");
+    }
+  },
+  methods: {
+    drawGraph(id) {
+      this.chart = echarts.init(document.getElementById(id), this.theme);
+      this.chart.showLoading();
+      this.chart.setOption(this.options);
       this.chart.hideLoading();
     },
     makeSeries(payload, index) {
