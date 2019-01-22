@@ -3,6 +3,8 @@
     <div class="changeTheme">
       <h3>更改主题</h3>
       <ch-theme-btn/>
+      <h3>表格界面</h3>
+      <el-button type="primary" icon="el-icon-caret-right" @click="showCharts">表格展示</el-button>
     </div>
   </div>
 </template>
@@ -19,6 +21,11 @@ export default {
   computed: {
     ...mapGetters(["name", "roles"]),
   },
+  methods: {
+    showCharts() {
+      this.$router.push({ path: "/chart" });
+    }
+  }
 };
 </script>
 

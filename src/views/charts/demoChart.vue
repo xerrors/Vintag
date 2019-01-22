@@ -1,7 +1,6 @@
 <template>
   <div class="charts chart-lefts">
     <div id="secondCharts" style=" width:100%; height:100%;"/>
-    <p>{{ theme }}</p>
   </div>
 </template>
 
@@ -72,7 +71,7 @@ export default {
   watch: {
     theme() {
       console.log("watch changed!");
-      this.drawGraph("secondCharts");
+      this.$router.push({ path: "/chart" });
     }
   },
   methods: {
