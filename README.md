@@ -2,7 +2,7 @@
 `Date: 2019/1/21`
 [DemoLink](http://www.xerrors.fun)
 
-模板来自于：https://github.com/PanJiaChen/vue-admin-template/tree/master/src
+模板来自于：[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template/tree/master/src)
 
 ## 思路
 
@@ -18,17 +18,29 @@
 > 思路
 > - 使用 deepstreamHub 实现多界面数据交互。[deepstreamHub](https://deepstreamhub.com/tutorials/getting-started/vuejs/) (目前已经不再对外注册账户)
 
+## 用户信息
+- 注册
+    username
+    password
+    realname
+    telephone
+    email
+- 登录
+    username
+    password
+
 ## 任务列表
 - route & axios
 - 实现对远程服务器进行数据请求，并完成表单验证。
 - 对用户登录状态进行鉴定，如果没有登录则无法进入数据窗口。
 - 在程序中使用 svg-icon 进行图形渲染。
 
-## Bug 列表
-无
-
-#### 部署命令
+## 部署
 ```shell
+# build
+npm run build
+
+# 传到远程服务器的文件目录
 scp -r ./dist/*  root@207.148.79.119:/www/wwwroot/www.xerrors.fun/
 ```
 ## 开发日志
@@ -36,6 +48,7 @@ scp -r ./dist/*  root@207.148.79.119:/www/wwwroot/www.xerrors.fun/
 今天的第一件事就是：
 - 成功部署应用到服务器上面，但是又出现了另外一个bug，老是进入404，还不是我写的404。
 - 设置登录界面的卡片为上下左右居中，且添加了进入动画。
+- 添加了忘记密码以及用户注册控件，虽然并没有什么用。
 
 #### 2019.1.21
 几经周折，最终还是准备使用原生的Echarts是，虽然配置麻烦了一点，但是文档多啊，使用起来方便啊！

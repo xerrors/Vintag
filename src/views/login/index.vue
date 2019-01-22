@@ -151,25 +151,13 @@ export default {
       });
     },
     forgetPasswd() {
-        this.$alert('这是一段内容', '标题名称', {
+        this.$alert('这个我也没有办法啊', '忘记密码', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
     },
     register() {
-        this.$alert('这是一段内容', '标题名称', {
+        this.$alert('功能开发中。。。', '用户注册', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
     }
   }
