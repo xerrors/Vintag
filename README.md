@@ -36,12 +36,17 @@
 - 在程序中使用 svg-icon 进行图形渲染。
 
 ## 部署
+在本机中添加了shell脚本，由于比较懒不想每次都输入密码
 ```shell
-# build
+git add *
+git commit -m "update in VScode"
+git push
+
 npm run build
 
-# 传到远程服务器的文件目录
+cat ../servePasswd > passwd
 scp -r ./dist/*  root@207.148.79.119:/www/wwwroot/www.xerrors.fun/
+send $passwd
 ```
 ## 开发日志
 #### 2019.1.22
