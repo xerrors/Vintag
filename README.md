@@ -20,15 +20,22 @@
 
 ## 用户信息
 - 注册
-    username
-    password
-    realname
-    telephone
-    email
+```json
+{
+   username: "username"
+   password: "password"
+   realname: "realname"
+   telephone: "telephone"
+   email: "email"
+}
+```
 - 登录
-    username
-    password
-
+```json
+{
+   username: "username"
+   password: "password"
+}
+```
 ## 任务列表
 - route & axios
 - 实现对远程服务器进行数据请求，并完成表单验证。

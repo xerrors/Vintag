@@ -26,14 +26,6 @@ export function logout() {
   })
 }
 
-// userInfo
-// {
-//   username: "username"
-//   password: "password"
-//   realname: "realname"
-//   telephone: "telephone"
-//   email: "email"
-// }
 export function register(userInfo) {
   return request({
     url: '/user/register',
