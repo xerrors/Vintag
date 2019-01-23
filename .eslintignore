@@ -2,3 +2,4 @@ build/*.js
 config/*.js
 src/assets
 src/views/login/index.vue
+src/views/register/index.vue
