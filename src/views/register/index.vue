@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="register-container">
     <!-- 粒子特效插件 -->
     <vue-particles
       color="#6495ED"
@@ -20,60 +20,58 @@
       class="particles-js"
     />
     <!-- 登陆卡片 -->
-    <el-card shadow="hover" class="login-card">
+    <el-card shadow="hover" class="register-card">
       <el-form
-        ref="loginForm"
-        :model="loginForm"
-        :rules="loginRules"
-        class="login-form"
+        ref="userForm"
+        :model="userForm"
+        :rules="userRules"
+        class="register-form"
         auto-complete="on"
         label-position="left"
       >
         <!-- 标题 -->
-        <h4 class="title">Vintag 数据可视化</h4>
+        <h4 class="title">用户注册</h4>
         <!-- 用户名 -->
         <el-form-item prop="username">
-          <span class="svg-container">
-            <svg-icon icon-class="user"/>
-          </span>
-          <el-input
-            v-model.trim="loginForm.username"
+          昵称：<el-input
+            v-model.trim="userForm.username"
             name="username"
             type="text"
-            auto-complete="off"
             placeholder="username"
           />
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password"/>
-          </span>
-          <el-input
+          密码：<el-input
             :type="pwdType"
-            v-model.trim="loginForm.password"
-            name="password"
-            auto-complete="off"
+            v-model.trim="userForm.password"
             placeholder="password"
-            @keyup.enter.native="handleLogin"
+            name="password"
           />
           <span class="show-pwd" @click="showPwd">
             <svg-icon icon-class="eye"/>
           </span>
         </el-form-item>
-        <!-- 登陆按钮 -->
         <el-form-item>
-          <el-button :loading="loading" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
+          姓名：<el-input v-model.trim="userForm.realname" placeholder="realname"/>
         </el-form-item>
         <el-form-item>
-          <el-button type="text" class="text-btn" size="small" @click="forgetPasswd">忘记密码</el-button>
+          号码：<el-input v-model.trim="userForm.telephone" placeholder="telephone"/>
+        </el-form-item>
+        <el-form-item>
+          邮箱：<el-input v-model.trim="userForm.email" placeholder="email"/>
+        </el-form-item>
+        <!-- 注册按钮 -->
+        <el-form-item>
+          <el-button :loading="loading" style="width:100%;" @click.native.prevent="handleRegister">注册</el-button>
+        </el-form-item>
+        <el-form-item>
           <el-button
             type="text"
             class="text-btn"
             size="small"
-            @click="register"
-            style="float: right"
-          >没有账户？注册</el-button>
+            @click="toLogin"
+          >已有账户？登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -81,31 +79,60 @@
 </template>
 
 <script>
-import { isvalidUsername } from "@/utils/validate";
+import { validUsername, validPassword, validTelephone, validEmail } from "@/utils/validate";
 import axios from "axios";
 export default {
-  name: "Login",
+  name: "Register",
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error("请输入正确的用户名"));
+      if (!validUsername(value)) {
+        callback(new Error("用户名应为5-12位的英文字母"));
       } else {
         callback();
       }
     };
-    const validatePass = (rule, value, callback) => {
-      if (value.length < 5) {
-        callback(new Error("密码不能小于5位"));
+    const validatePassword = (rule, value, callback) => {
+      if (!validPassword(value)) {
+        callback(new Error("密码格式错误"));
+      } else {
+        callback();
+      }
+    };
+    const validateRealname = (rule, value, callback) => {
+      if (value.lenth < 1) {
+        callback(new Error("真实姓名不能为空"));
+      } else {
+        callback();
+      }
+    };
+    const validateTelephone = (rule, value, callback) => {
+      if (!validTelephone(value)) {
+        callback(new Error("号码不合法"));
+      } else {
+        callback();
+      }
+    };
+    const validateEmail = (rule, value, callback) => {
+      if (!validEmail(value)) {
+        callback(new Error("邮箱不合法"));
       } else {
         callback();
       }
     };
     return {
-      loginRules: {
-        username: [
-          { required: true, trigger: "blur", validator: validateUsername }
-        ],
-        password: [{ required: true, trigger: "blur", validator: validatePass }]
+      userForm: {
+        username: null,
+        password: null,
+        realname: null,
+        telephone: null,
+        email: null
+      },
+      userRules: {
+        username: [{ required: true, trigger: "blur", validator: validateUsername }],
+        password: [{ required: true, trigger: "blur", validator: validatePassword }],
+        realname: [{ required: true, trigger: "blur", validator: validateRealname }],
+        tellphone: [{ required: true, trigger: "blur", validator: validateTelephone }],
+        email: [{ required: true, trigger: "blur", validator: validateEmail }],
       },
       loading: false,
       pwdType: "password",
@@ -128,7 +155,8 @@ export default {
         this.pwdType = "password";
       }
     },
-    submit() {
+    // 执行用户登录操作
+    handleRegister() {
       this.$refs.userForm.validate(valid => {
         if (valid) {
           this.loading = true;
@@ -146,6 +174,9 @@ export default {
           return false;
         }
       });
+    },
+    toLogin() {
+      this.$router.push("/login")
     }
   }
 };
@@ -154,11 +185,11 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 $bg: #2d3a4b;
 $light_gray: #eee;
-$font_dark: #777;
+$font_dark: #666;
 $font_light: #eee;
 
 /* reset element-ui css */
-.login-container {
+.register-container {
   .el-input {
     display: inline-block;
     height: 47px;
@@ -184,10 +215,10 @@ $font_light: #eee;
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
-$font_dark: #777;
+$font_dark: #666;
 $font_light: #eee;
 $ele_blue: #409eff;
-.login-container {
+.register-container {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -226,7 +257,7 @@ $ele_blue: #409eff;
     cursor: pointer;
     user-select: none;
   }
-  .login-card {
+  .register-card {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -235,12 +266,12 @@ $ele_blue: #409eff;
     margin: auto;
     width: 400px;
     max-width: 100%;
-    height: 400px;
+    height: 600px;
     padding: 35px 35px 15px 35px;
     opacity: 0;
     // 设置过渡动画
     animation-name: slideUp;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
   .text-btn {

@@ -81,14 +81,14 @@
 </template>
 
 <script>
-import { isvalidUsername } from "@/utils/validate";
+import { validUsername } from "@/utils/validate";
 import axios from "axios";
 export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-      if (!isvalidUsername(value)) {
-        callback(new Error("请输入正确的用户名"));
+      if (!validUsername(value)) {
+        callback(new Error("用户名格式错误"));
       } else {
         callback();
       }
@@ -106,9 +106,7 @@ export default {
         password: ""
       },
       loginRules: {
-        username: [
-          { required: true, trigger: "blur", validator: validateUsername }
-        ],
+        username: [{ required: true, trigger: "blur", validator: validateUsername }],
         password: [{ required: true, trigger: "blur", validator: validatePass }]
       },
       loading: false,
@@ -143,8 +141,9 @@ export default {
               this.loading = false;
               this.$router.push({ path: this.redirect || "/" });
             })
-            .catch(() => {
+            .catch((err) => {
               this.loading = false;
+              console.log(err)
             });
         } else {
           console.log("error submit!!");
@@ -158,9 +157,7 @@ export default {
       });
     },
     register() {
-      this.$alert("功能开发中。。。", "用户注册", {
-        confirmButtonText: "确定"
-      });
+      this.$router.push("/register")
     }
   }
 };
@@ -169,7 +166,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 $bg: #2d3a4b;
 $light_gray: #eee;
-$font_dark: #777;
+$font_dark: #666;
 $font_light: #eee;
 
 /* reset element-ui css */
@@ -199,7 +196,7 @@ $font_light: #eee;
 $bg: #2d3a4b;
 $dark_gray: #889aa4;
 $light_gray: #eee;
-$font_dark: #777;
+$font_dark: #666;
 $font_light: #eee;
 $ele_blue: #409eff;
 .login-container {
@@ -255,7 +252,7 @@ $ele_blue: #409eff;
     opacity: 0;
     // 设置过渡动画
     animation-name: slideUp;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
   .text-btn {

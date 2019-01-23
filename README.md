@@ -22,17 +22,17 @@
 - 注册
 ```json
 {
-   username: "username"
-   password: "password"
-   realname: "realname"
-   telephone: "telephone"
+   username: "username",
+   password: "password",
+   realname: "realname",
+   telephone: "telephone",
    email: "email"
 }
 ```
 - 登录
 ```json
 {
-   username: "username"
+   username: "username",
    password: "password"
 }
 ```
@@ -54,6 +54,11 @@ npm run build
 scp -r ./dist/*  root@207.148.79.119:/www/wwwroot/www.xerrors.fun/
 ```
 ## 开发日志
+#### 2019.1.23
+今天的主要任务还是实现登录以及注册，所以先写了一个注册界面出来，具体的鉴权以及Cookie放到以后再完善
+- 添加注册界面，并完善用户本地验证的正则表达式
+- 添加服务器为 FireBase 所以版黁呢个正常工作
+
 #### 2019.1.22
 今天的第一件事就是：
 - 成功部署应用到服务器上面，但是又出现了另外一个bug，老是进入404，还不是我写的404。
