@@ -134,23 +134,27 @@ export default {
     },
     // 执行用户登录操作
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("Login", this.loginForm)
-            .then(() => {
-              this.loading = false;
-              this.$router.push({ path: this.redirect || "/" });
-            })
-            .catch(() => {
-              this.loading = false;
-            });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     this.loading = true;
+      //     this.$store
+      //       .dispatch("Login", this.loginForm)
+      //       .then(() => {
+      //         this.loading = false;
+      //         this.$router.push({ path: this.redirect || "/" });
+      //       })
+      //       .catch(() => {
+      //         this.loading = false;
+      //       });
+      //   } else {
+      //     console.log("error submit!!");
+      //     return false;
+      //   }
+      // });
+      this.loding = true;
+      axios.get('https://vintag-a5287.firebaseio.com/users.json')
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     },
     forgetPasswd() {
       this.$alert("这个我也没有办法啊", "忘记密码", {
