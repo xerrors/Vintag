@@ -46,7 +46,7 @@ export default {
       return this.$store.getters.theme;
     },
     options() {
-        return {
+      return {
         title: {
           text: "此处为标题",
           subtext: "副标题",
@@ -82,14 +82,14 @@ export default {
             center: ["50%", "50%"],
             roseType: "area",
             data: this.opinionData,
-            animationType: 'scale',
-            animationEasing: 'elasticOut',
-            animationDelay: function (idx) {
-                return Math.random() * 200;
+            animationType: "scale",
+            animationEasing: "elasticOut",
+            animationDelay: function(idx) {
+              return Math.random() * 200;
             }
           }
         ]
-      }
+      };
     }
   },
   methods: {

@@ -18,6 +18,7 @@ import VueParticles from 'vue-particles'
 // 引入主题文件
 import 'echarts/theme/macarons'
 import 'echarts/theme/vintage'
+import 'echarts/theme/dark'
 import 'echarts/theme/shine'
 
 Vue.use(VueParticles)

@@ -1,6 +1,8 @@
+import Cookies from 'js-cookie'
+
 const chart = {
   state: {
-    theme: 'vintage'
+    theme: Cookies.get('theme') || 'dark'
   },
   mutations: {
     changeTheme: (state, payload) => {
@@ -10,6 +12,7 @@ const chart = {
   actions: {
     changeTheme: (context, payload) => {
       context.commit('changeTheme', payload)
+      Cookies.set('theme', payload)
     }
   }
 }

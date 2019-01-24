@@ -13,22 +13,19 @@ export default {
   data() {
     return {
       chart: null,
-      chartType: "line",
-      data: [
-        [150, 182, 191, 134, 150, 120, 200, 125, 145, 122, 165, 122],
-        [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150],
-        [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 185, 122]
-      ],
-      axisData: {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-      },
-      legend: ["A", "B", "C"]
+      chartType: "line", // 表格类型
+      title: "", // 标题
+      data: [], // 数据
+      axisData: {}, // 坐标轴数据
+      legend: [] // 就是那个数据分类吧
     };
   },
   computed: {
+    // 主题
     theme() {
       return this.$store.getters.theme;
     },
+    // 不知道怎么翻译的玩意儿
     mySeries() {
       var mySeries = [];
       for (var i = 0; i < this.legend.length; i++) {
@@ -43,7 +40,7 @@ export default {
     options() {
       return {
         title: {
-          text: "十二个季度的销售额",
+          text: this.title,
           top: "10px",
           left: "20px"
         },
@@ -54,7 +51,6 @@ export default {
         },
         xAxis: {
           type: "category",
-          boundaryGap: false,
           data: this.axisData.x
         },
         yAxis: {},
