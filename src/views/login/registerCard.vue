@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 登陆卡片 -->
-    <el-card shadow="hover" class="user-card register-card">
+    <el-card shadow="always" class="user-card register-card">
       <el-form
         ref="userForm"
         :model="userForm"

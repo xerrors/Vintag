@@ -1,6 +1,6 @@
 <template>
         <!-- 登陆卡片 -->
-    <el-card shadow="hover" class="user-card login-card">
+    <el-card shadow="always" class="user-card login-card">
       <el-form
         ref="loginForm"
         :model="loginForm"
