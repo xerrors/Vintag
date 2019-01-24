@@ -131,7 +131,7 @@ export default {
       });
     },
     forgetPasswd() {
-      this.$alert("要不试试 账户：admin，密码：admin", "忘记密码", {
+      this.$alert("要不试试 账户：admin，密码：admin", "Oooops", {
         confirmButtonText: "确定"
       });
     },
