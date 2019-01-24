@@ -1,26 +1,7 @@
 <template>
-  <div class="register-container">
-    <!-- 粒子特效插件 -->
-    <vue-particles
-      color="#6495ED"
-      :particleOpacity="0.8"
-      :particlesNumber="60"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#6495ED"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.6"
-      :linesDistance="150"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-      class="particles-js"
-    />
+  <div>
     <!-- 登陆卡片 -->
-    <el-card shadow="hover" class="register-card">
+    <el-card shadow="hover" class="user-card register-card">
       <el-form
         ref="userForm"
         :model="userForm"
@@ -155,7 +136,7 @@ export default {
         this.pwdType = "password";
       }
     },
-    // 执行用户登录操作
+    // 执行用户注册操作
     handleRegister() {
       this.$refs.userForm.validate(valid => {
         if (valid) {
@@ -182,121 +163,5 @@ export default {
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-$bg: #2d3a4b;
-$light_gray: #eee;
-$font_dark: #666;
-$font_light: #eee;
-
-/* reset element-ui css */
-.register-container {
-  .el-input {
-    display: inline-block;
-    height: 47px;
-    width: 85%;
-    input {
-      background: transparent;
-      border: 0px;
-      -webkit-appearance: none;
-      border-radius: 0px;
-      padding: 12px 5px 12px 15px;
-      color: $font_dark;
-      height: 47px;
-      &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: #fff !important;
-      }
-    }
-  }
-}
-</style>
-
 <style rel="stylesheet/scss" lang="scss" scoped>
-$bg: #2d3a4b;
-$dark_gray: #889aa4;
-$light_gray: #eee;
-$font_dark: #666;
-$font_light: #eee;
-$ele_blue: #409eff;
-.register-container {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: $bg;
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
-  }
-  .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: $dark_gray;
-    vertical-align: middle;
-    width: 30px;
-    display: inline-block;
-  }
-  .title {
-    font-size: 26px;
-    font-weight: 400;
-    color: $font_dark;
-    margin: 0px auto 40px auto;
-    text-align: center;
-    font-weight: bold;
-  }
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: $dark_gray;
-    cursor: pointer;
-    user-select: none;
-  }
-  .register-card {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 400px;
-    max-width: 100%;
-    height: 600px;
-    padding: 35px 35px 15px 35px;
-    opacity: 0;
-    // 设置过渡动画
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-  }
-  .text-btn {
-    color: $font_dark;
-    :hover {
-      color: $ele_blue;
-    }
-  }
-  @keyframes slideUp {
-    0% {
-      transform: translateY(100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-}
-#particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
 </style>
