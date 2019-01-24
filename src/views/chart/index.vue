@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <div class="ch-theme">
+    <div class="ch-theme-div">
       <h3>更换主题</h3>
       <ch-theme-btn/>
     </div>
@@ -39,19 +39,20 @@ export default {
   background-color: $bg;
   width: 100%;
   height: 100%;
+  .ch-theme-div {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    h3 {
+      text-align: center
+    }
+}
 }
 
-.ch-theme {
-  margin: 0 auto;
-}
 .charts {
-  // border: 2px solid #42b983;
   width: 600px;
   height: 400px;
   margin: 0 auto;
-  // margin: 20px;
-  // padding: 20px
-  // float: left;
 }
 </style>
 

@@ -14,11 +14,7 @@ export default {
     return {
       chart: null,
       chartType: "line",
-      data: [
-        [150, 182, 191, 134, 150, 120, 200, 125, 145, 122, 165, 122],
-        [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150],
-        [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 185, 122]
-      ],
+      data: [],
       axisData: {
         x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
       },
@@ -26,12 +22,15 @@ export default {
     };
   },
   computed: {
+    itemNum() {
+      return this.legend.length;
+    },
     theme() {
       return this.$store.getters.theme;
     },
     mySeries() {
       var mySeries = [];
-      for (var i = 0; i < this.legend.length; i++) {
+      for (var i = 0; i < this.itemNum; i++) {
         mySeries.push({
           type: this.chartType,
           name: this.legend[i],
@@ -52,6 +51,9 @@ export default {
           data: this.legend,
           top: "10px"
         },
+        tooltip: {
+          trigger: "axis"
+        },
         xAxis: {
           type: "category",
           boundaryGap: false,
@@ -68,10 +70,20 @@ export default {
       this.chart.showLoading();
       this.chart.setOption(this.options);
       this.chart.hideLoading();
+    },
+    setRandomData() {
+      for(var i = 0; i < this.itemNum; i++){
+        var data = [];
+        for(var j = 0; j < 12; j ++){
+          data.push(Math.random()*100 + 200)
+        }
+        this.data.push(data)
+      }
     }
   },
   mounted() {
     this.$nextTick(function() {
+      this.setRandomData();
       this.drawGraph("demoChart");
     });
   }
