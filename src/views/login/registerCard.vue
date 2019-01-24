@@ -25,7 +25,7 @@
         <el-form-item prop="password">
           密码：<el-input
             :type="pwdType"
-            v-model.trim="userForm.password"
+            v-model="userForm.password"
             placeholder="password"
             name="password"
           />
@@ -33,13 +33,13 @@
             <svg-icon icon-class="eye"/>
           </span>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="realname">
           姓名：<el-input v-model.trim="userForm.realname" placeholder="realname"/>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="telephone">
           号码：<el-input v-model.trim="userForm.telephone" placeholder="telephone"/>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="email">
           邮箱：<el-input v-model.trim="userForm.email" placeholder="email"/>
         </el-form-item>
         <!-- 注册按钮 -->
@@ -80,7 +80,7 @@ export default {
       }
     };
     const validateRealname = (rule, value, callback) => {
-      if (value.lenth < 1) {
+      if (value.length < 1) {
         callback(new Error("真实姓名不能为空"));
       } else {
         callback();
@@ -112,7 +112,7 @@ export default {
         username: [{ required: true, trigger: "blur", validator: validateUsername }],
         password: [{ required: true, trigger: "blur", validator: validatePassword }],
         realname: [{ required: true, trigger: "blur", validator: validateRealname }],
-        tellphone: [{ required: true, trigger: "blur", validator: validateTelephone }],
+        telephone: [{ required: true, trigger: "blur", validator: validateTelephone }],
         email: [{ required: true, trigger: "blur", validator: validateEmail }],
       },
       loading: false,
@@ -140,18 +140,22 @@ export default {
     handleRegister() {
       this.$refs.userForm.validate(valid => {
         if (valid) {
-          this.loading = true;
-          this.$store
-            .dispatch("Register", this.userForm)
-            .then(() => {
-              this.loading = false;
-              this.$router.push({ path: this.redirect || "/" });
-            })
-            .catch(() => {
-              this.loading = false;
-            });
+          this.$message({
+          message: '功能开发中。。。',
+          type: 'warning'
+        });
+          // this.loading = true;
+          // this.$store
+          //   .dispatch("Register", this.userForm)
+          //   .then(() => {
+          //     this.loading = false;
+          //     this.$router.push({ path: this.redirect || "/" });
+          //   })
+          //   .catch(() => {
+          //     this.loading = false;
+          //   });
         } else {
-          console.log("error submit!!");
+          this.$message.error('用户信息格式错误！');
           return false;
         }
       });
