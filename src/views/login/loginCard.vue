@@ -137,9 +137,6 @@ export default {
     },
     register() {
       this.$emit("changeLoginState")
-    //   this.$alert("功能开发中", "用户注册", {
-    //     confirmButtonText: "确定"
-    //   });
     }
   }
 };
