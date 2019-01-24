@@ -2,4 +2,6 @@ build/*.js
 config/*.js
 src/assets
 src/views/login/index.vue
+src/views/login/loginCard.vue
+src/views/login/registerCard.vue
 src/views/register/index.vue
