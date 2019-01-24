@@ -1,5 +1,5 @@
 <template>
-        <!-- 登陆卡片 -->
+    <!-- 登陆卡片 -->
     <el-card shadow="always" class="user-card login-card">
       <el-form
         ref="loginForm"
@@ -136,10 +136,10 @@ export default {
       });
     },
     register() {
-    //   this.$router.push("/register")
-      this.$alert("功能开发中", "用户注册", {
-        confirmButtonText: "确定"
-      });
+      this.$emit("changeLoginState")
+    //   this.$alert("功能开发中", "用户注册", {
+    //     confirmButtonText: "确定"
+    //   });
     }
   }
 };

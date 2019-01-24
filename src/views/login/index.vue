@@ -20,8 +20,8 @@
       class="particles-js"
     />
     <!-- 登陆卡片 -->
-    <login-card v-if="isLogin"/>
-    <register-card v-else/>
+    <login-card v-if="isLogin" @changeLoginState="isLogin=!isLogin"/>
+    <register-card v-else @changeLoginState="isLogin=!isLogin"/>
   </div>
 </template>
 

@@ -157,7 +157,7 @@ export default {
       });
     },
     toLogin() {
-      this.$router.push("/login")
+      this.$emit("changeLoginState")
     }
   }
 };
