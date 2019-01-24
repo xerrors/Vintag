@@ -1,6 +1,6 @@
 <template>
   <div class="charts chart-left">
-    <div id="demoChart" style=" width:100%; height:100%;"/>
+    <div id="chartTemplete" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
@@ -8,10 +8,11 @@
 /* eslint-disable */
 import echarts from "echarts";
 export default {
-  name: "demoChart",
+  name: "chartTemplete",
   components: {},
   data() {
     return {
+      name: "chartTemplete",
       chart: null,
       chartType: "line", // 表格类型
       title: "", // 标题
@@ -68,7 +69,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      this.drawGraph("demoChart");
+      this.drawGraph(this.name);
     });
   }
 };
