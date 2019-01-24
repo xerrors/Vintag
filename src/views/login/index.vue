@@ -43,14 +43,12 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-$bg: #f2f5fa;
+$bg: #f6fafd;
 $light_gray: #eee;
 $font_dark: #666;
 $font_light: #eee;
-
 /* reset element-ui css */
 .login-container {
-  background: $bg;
   .el-input {
     display: inline-block;
     height: 47px;
@@ -73,12 +71,17 @@ $font_light: #eee;
 </style>
 
 <style rel="stylesheet/scss" lang="scss">
+$bg: #f6fafd;
 $dark_gray: #889aa4;
 $light_gray: #eee;
 $font_dark: #666;
 $font_light: #eee;
 $ele_blue: #409eff;
 .login-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: $bg;
   .login-card {
     height: 400px;
     opacity: 0;
@@ -148,7 +151,6 @@ $ele_blue: #409eff;
   width: 100%;
   height: 100%;
 }
-
 @keyframes slideUp {
   0% {
     transform: translateY(100px);
