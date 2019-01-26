@@ -62,7 +62,7 @@
 
 因为更换表格的主题的时候更换的背景是表格的背景，并不能够更换整个展示界面的背景，就不太好看，所以，可以在设计主题的时候为每个主题选择背景图片，或者颜色，当逐日改变的时候就可以相当于更换全剧背景了，是不是很机智。
 
-👆🏽上面的想法太白痴了，不仅仅要更换图表的主题，还要整个界面的主题，所以就需要使用到主题定制，具体的参考这篇文章：[动态换肤](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/theme.html#%E5%A4%9A%E5%A5%97%E4%B8%BB%E9%A2%98%E6%8D%A2%E8%82%A4
+👆🏽上面的想法太白痴了，不仅仅要更换图表的主题，还要整个界面的主题，所以就需要使用到主题定制，具体的参考这篇文章：[动态换肤](https://panjiachen.github.io/vue-element-admin-site/zh/guide/advanced/theme.html#%E5%A4%9A%E5%A5%97%E4%B8%BB%E9%A2%98%E6%8D%A2%E8%82%A4)
 
 ### 部署
 
