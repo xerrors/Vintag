@@ -5,7 +5,7 @@
       <ch-theme-btn/>
     </div>
     <demo-chart/>
-    <demo-circle/>
+    <!-- <demo-circle/> -->
   </div>
 </template>
 

@@ -21,6 +21,24 @@ export default {
     recv() {
       return randomData()
     },
+    axis() {
+      var axisData = this.recv.axis
+      var axis = {
+        x: {},
+        y: {}
+      }
+      if(axisData.x) {
+        axis.x.data = axisData.x
+      } else {
+        axis.x.type = "value"
+      }
+      if(axisData.y) {
+        axis.y.data = axisData.y
+      } else {
+        axis.y.type = "value"
+      }
+      return axis
+    },
     theme() {
       return this.$store.getters.theme;
     },
@@ -51,10 +69,7 @@ export default {
         tooltip: {
           trigger: "axis"
         },
-        xAxis: {
-          type: "category",
-          data: this.recv.axis.x
-        },
+        xAxis: this.axis.x,
         yAxis: {},
         series: this.mySeries
       };
