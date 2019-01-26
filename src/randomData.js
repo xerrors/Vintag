@@ -10,11 +10,11 @@ export function randomData() {
   }
   // 数据
   randData.data = []
-  var dataLength = Math.floor((Math.random() * 10 + 8))
+  var dataLength = Math.floor((Math.random() * 5 + 4))
   for (var i = 0; i < randData.legend.length; i++) {
     var data = []
     for (var j = 0; j < dataLength; j++) {
-      data.unshift(Math.floor((Math.random() * 100 + 100)))
+      data.unshift(Math.floor((Math.random() * 100 + 50)))
     }
     randData.data.push(data)
   }

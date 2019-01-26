@@ -57,14 +57,20 @@ export default {
       return {
         title: {
           text: this.recv.title,
-          top: "10px",
-          left: "20px"
+          top: "3%",
+          left: "3%"
         },
         legend: {
           x: "right",
           data: this.recv.legend,
-          top: "10px",
-          right: "10px"
+          top: "3%",
+          right: "3%"
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
         },
         tooltip: {
           trigger: "axis"
