@@ -13,6 +13,8 @@
 {
    title: String,
    legend: Array,
+   legendLen: Number,
+   dataLength: Number,
    axis: {
       x: Array | null,
       y: Array | null
@@ -28,7 +30,7 @@
 ### 小屏控大屏
 
 > 思路
-> - 使用 deepstreamHub 实现多界面数据交互。[deepstreamHub](https://deepstreamhub.com/tutorials/getting-started/vuejs/) (目前已经不再对外注册账户)
+> - 使用 deepstreamHub 实现多界面数据交互。[deepstreamHub](https://deepstreamhub.com/tutorials/getting-started/vuejs/) (已经凉了)
 > - 使用 WebSocket 实现不同设备间的跨域传输，Socket.io 好像也不错的。
 
 ### 用户信息
@@ -75,6 +77,13 @@ scp -r ./dist/*  root@207.148.79.119:/www/wwwroot/www.xerrors.fun/
 ```
 
 ### 开发日志
+
+#### 2019.1.26
+
+开始着手可视化组件开发，为了尽快适应数据的变化，同时也是因为设计稿还没有给我，又没法与后端同学交流
+
+- 既然没有数据，自动生成随机数据
+- 模仿英出现的组件化的图表着手设计自己的组件，因为是自己一个项目使用，全部按照风格统一进行设计
 
 #### 2019.1.24
 

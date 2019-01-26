@@ -7,8 +7,8 @@
 <script>
 /* eslint-disable */
 import echarts from "echarts";
-import { randomData } from '@/randomData.js'
 export default {
+  props: ['chartdata'],
   name: "demoChart",
   components: {},
   data() {
@@ -18,24 +18,24 @@ export default {
     };
   },
   computed: {
-    recv() {
-      return randomData()
-    },
     axis() {
-      var axisData = this.recv.axis
+      var axisData = this.chartdata.axis
       var axis = {
         x: {},
         y: {}
       }
-      if(axisData.x) {
+      axis.x.data = []
+      if(axisData.x.length != 0) {
         axis.x.data = axisData.x
       } else {
-        axis.x.type = "value"
+        for(var i = 1; i <= this.chartdata.dataLength; i++){
+          axis.x.data.push(i)
+        }
       }
-      if(axisData.y) {
+      if(axisData.y.length != 0) {
         axis.y.data = axisData.y
       } else {
-        axis.y.type = "value"
+        axis.y = {}
       }
       return axis
     },
@@ -44,11 +44,11 @@ export default {
     },
     mySeries() {
       var mySeries = [];
-      for (var i = 0; i < this.recv.legend.length; i++) {
+      for (var i = 0; i < this.chartdata.legendLen; i++) {
         mySeries.push({
           type: this.chartType,
-          name: this.recv.legend[i],
-          data: this.recv.data[i]
+          name: this.chartdata.legend[i],
+          data: this.chartdata.data[i]
         });
       }
       return mySeries;
@@ -56,13 +56,13 @@ export default {
     options() {
       return {
         title: {
-          text: this.recv.title,
+          text: this.chartdata.title,
           top: "3%",
           left: "3%"
         },
         legend: {
           x: "right",
-          data: this.recv.legend,
+          data: this.chartdata.legend,
           top: "3%",
           right: "3%"
         },
@@ -76,7 +76,7 @@ export default {
           trigger: "axis"
         },
         xAxis: this.axis.x,
-        yAxis: {},
+        yAxis: this.axis.y,
         series: this.mySeries
       };
     }
