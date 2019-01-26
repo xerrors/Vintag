@@ -7,10 +7,29 @@
 
 ## 具体内容
 
+### 图标数据类型
+
+```json
+{
+   title: String,
+   legend: Array,
+   axis: {
+      x: Array | null,
+      y: Array | null
+   },
+   data: [
+      Array,
+      Array,
+      ...
+   ]
+}
+```
+
 ### 小屏控大屏
 
 > 思路
 > - 使用 deepstreamHub 实现多界面数据交互。[deepstreamHub](https://deepstreamhub.com/tutorials/getting-started/vuejs/) (目前已经不再对外注册账户)
+> - 使用 WebSocket 实现不同设备间的跨域传输，Socket.io 好像也不错的。
 
 ### 用户信息
 
