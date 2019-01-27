@@ -39,11 +39,13 @@
             </span>
           </el-form-item>
           <!-- 登陆按钮 -->
+          <div class="forgot-container">
             <div class="login-btn">登录</div>
             <div class="forgot-passwd">
               <p>忘记密码？</p>
               <p>Fotgot Password?</p>
             </div>
+          </div>
         </el-form>
       </div>
       <div class="login-methods">
@@ -66,6 +68,12 @@
           </span>
           <a class="login-method-btn" @click="QRcodeLogin">关联APP扫码登录</a>
         </div>
+      </div>
+      <div class="register-container">
+        <a class="register-btn">还没有账户？ 立即注册吧！</a>
+        <span class="svg-container">
+          <svg-icon icon-class="right"/>
+        </span>
       </div>
     </div>
   </div>
@@ -219,8 +227,11 @@ $font_light: rgb(255, 255, 255);
     height: 100%;
     background-color: rgba(18, 18, 18, 0.5);
   }
+  // 子容器
   .sub-container {
-    width: 1000px;
+    width: 80%;
+    max-width: 1000px;
+    min-width: 400px;
     height: 500px;
     position: absolute;
     top: 0;
@@ -228,10 +239,16 @@ $font_light: rgb(255, 255, 255);
     left: 0;
     right: 0;
     margin: auto;
+    // flex 布局
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    // 登录表单
     .login-form {
-      width: 550px;
+      width: 60%;
+      min-width: 400px;
       height: 423px;
-      float: left;
       border: 0px solid;
       border-right-color: rgb(191, 191, 191);
       border-right-width: 1px;
@@ -262,8 +279,11 @@ $font_light: rgb(255, 255, 255);
         font-size: 17px;
         font-family: "SourceHanSansSC";
         color: rgb(255, 255, 255);
-        line-height: 2.765;
-        float: left;
+        line-height: 43px;
+      }
+      .forgot-container {
+        margin-top: 48px;
+        display: flex;
       }
       .forgot-passwd {
         :first-child {
@@ -272,33 +292,39 @@ $font_light: rgb(255, 255, 255);
         :last-child {
           margin-top: 0px;
         }
+        margin-left: 35px;
         p {
           height: 12px;
           font-size: 10px;
+          font-style: italic;
           font-family: "SourceHanSansSC";
           color: $font-light;
         }
       }
     }
+    // 登录方式
     .login-methods {
-      width: 440px;
+      width: 40%;
+      min-width: 400px;
       height: 423px;
-      margin-left: 560px;
       .title {
         font-size: 29px;
         font-family: "SourceHanSerifCN";
         color: $font_light;
         font-weight: bold;
         line-height: 1.621;
-        margin-top: 40px;
-        margin-left: 80px;
+        margin: 40px 60px 40px 60px;
       }
       .method-container {
+        display: flex;
         margin-left: 80px;
+        margin-top: 40px;
         .svg-container {
-          font-size: 35px;
+          width: 43px;
+          font-size: 43px;
         }
         .login-method-btn {
+          margin-left: 35px;
           font-size: 15px;
           font-family: "SourceHanSansSC";
           color: $font_light;
@@ -306,6 +332,29 @@ $font_light: rgb(255, 255, 255);
         }
       }
     }
+    .register-container {
+      margin-top: 90px;
+      font-style: italic;
+      font-size: 15px;
+      font-family: "SourceHanSansSC";
+      color: rgb(52, 128, 255);
+      line-height: 3.133;
+      text-shadow: 0px 0px 8.46px rgba(129, 129, 129, 0.004);
+      a {
+        border: 0px solid;
+        border-bottom-color: rgb(52, 128, 255);
+        border-bottom-width: 1px;
+      }
+    }
+  }
+}
+@media (max-width: 1250px) {
+  .login-form {
+    width: 100%;
+    border: 0px solid;
+  }
+  .login-methods {
+    width: 100%;
   }
 }
 </style>
