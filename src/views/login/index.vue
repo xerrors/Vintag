@@ -35,17 +35,15 @@
               @keyup.enter.native="handleLogin"
             />
             <span class="show-pwd" @click="showPwd">
-              <svg-icon icon-class="eye-close"/>
+              <svg-icon :icon-class="eyeState"/>
             </span>
           </el-form-item>
           <!-- 登陆按钮 -->
-          <el-form-item>
-            <el-button :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
-            <span class="forgot-passwd">
+            <div class="login-btn">登录</div>
+            <div class="forgot-passwd">
               <p>忘记密码？</p>
               <p>Fotgot Password?</p>
-            </span>
-          </el-form-item>
+            </div>
         </el-form>
       </div>
       <div class="login-methods">
@@ -94,6 +92,7 @@ export default {
       }
     };
     return {
+      eyeState: "eye-close",
       loginForm: {
         username: "",
         password: ""
@@ -121,7 +120,9 @@ export default {
     showPwd() {
       if (this.pwdType === "password") {
         this.pwdType = "";
+        this.eyeState = "eye-open";
       } else {
+        this.eyeState = "eye-close";
         this.pwdType = "password";
       }
     },
@@ -248,10 +249,21 @@ $font_light: rgb(255, 255, 255);
       .show-pwd {
         position: relative;
         left: -60px;
-        margin: auto auto;
+        top: 5px;
         font-size: 30px;
         color: $dark_gray;
         cursor: pointer;
+      }
+      .login-btn {
+        background-color: rgb(52, 128, 255);
+        width: 117px;
+        height: 43px;
+        text-align: center;
+        font-size: 17px;
+        font-family: "SourceHanSansSC";
+        color: rgb(255, 255, 255);
+        line-height: 2.765;
+        float: left;
       }
       .forgot-passwd {
         :first-child {
@@ -265,7 +277,6 @@ $font_light: rgb(255, 255, 255);
           font-size: 10px;
           font-family: "SourceHanSansSC";
           color: $font-light;
-          line-height: 4.7;
         }
       }
     }
@@ -285,7 +296,7 @@ $font_light: rgb(255, 255, 255);
       .method-container {
         margin-left: 80px;
         .svg-container {
-          font-size: 40px;
+          font-size: 35px;
         }
         .login-method-btn {
           font-size: 15px;
