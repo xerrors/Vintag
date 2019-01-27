@@ -1,164 +1,300 @@
 <template>
   <div class="login-container">
-    <!-- 粒子特效插件 -->
-    <vue-particles
-      color="#6495ED"
-      :particleOpacity="0.8"
-      :particlesNumber="40"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#6495ED"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.7"
-      :linesDistance="200"
-      :moveSpeed="3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-      class="particles-js"
-    />
-    <!-- 登陆卡片 -->
-    <login-card v-if="isLogin" @changeLoginState="isLogin=!isLogin"/>
-    <register-card v-else @changeLoginState="isLogin=!isLogin"/>
+    <div class="inner"/>
+    <div class="sub-container">
+      <div class="login-form">
+        <el-form
+          ref="loginForm"
+          :model="loginForm"
+          :rules="loginRules"
+          auto-complete="on"
+          label-position="left"
+        >
+          <!-- 标题 -->
+          <p class="title">LOGIN
+            <br>请登录
+          </p>
+          <!-- 用户名 -->
+          <el-form-item prop="username">
+            <el-input
+              v-model.trim="loginForm.username"
+              name="username"
+              type="text"
+              auto-complete="off"
+              placeholder="USERNAME OR E-MAIL"
+            />
+          </el-form-item>
+          <!-- 密码 -->
+          <el-form-item prop="password">
+            <el-input
+              :type="pwdType"
+              v-model.trim="loginForm.password"
+              name="password"
+              auto-complete="off"
+              placeholder="PASSWORD"
+              @keyup.enter.native="handleLogin"
+            />
+            <span class="show-pwd" @click="showPwd">
+              <svg-icon icon-class="eye-close"/>
+            </span>
+          </el-form-item>
+          <!-- 登陆按钮 -->
+          <el-form-item>
+            <el-button :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
+            <span class="forgot-passwd">
+              <p>忘记密码？</p>
+              <p>Fotgot Password?</p>
+            </span>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="login-methods">
+        <p class="title">使用其它方式登录</p>
+        <div class="method-container">
+          <span class="svg-container">
+            <svg-icon icon-class="qq"/>
+          </span>
+          <a class="login-method-btn" @click="qqLogin">QQ账户登录</a>
+        </div>
+        <div class="method-container">
+          <span class="svg-container">
+            <svg-icon icon-class="google"/>
+          </span>
+          <a class="login-method-btn" @click="googleLogin">Google账号登录</a>
+        </div>
+        <div class="method-container">
+          <span class="svg-container">
+            <svg-icon icon-class="qrcode"/>
+          </span>
+          <a class="login-method-btn" @click="QRcodeLogin">关联APP扫码登录</a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import loginCard from "@/views/login/loginCard";
-import registerCard from "@/views/login/registerCard";
+import { validUsername } from "@/utils/validate";
+import axios from "axios";
 export default {
   name: "Login",
   data() {
+    const validateUsername = (rule, value, callback) => {
+      if (!validUsername(value)) {
+        callback(new Error("用户名格式错误"));
+      } else {
+        callback();
+      }
+    };
+    const validatePass = (rule, value, callback) => {
+      if (value.length < 1) {
+        callback(new Error("密码不能为空"));
+      } else {
+        callback();
+      }
+    };
     return {
-      isLogin: true
+      loginForm: {
+        username: "",
+        password: ""
+      },
+      loginRules: {
+        username: [
+          { required: true, trigger: "blur", validator: validateUsername }
+        ],
+        password: [{ required: true, trigger: "blur", validator: validatePass }]
+      },
+      loading: false,
+      pwdType: "password",
+      redirect: undefined
+    };
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect;
+      },
+      immediate: true
     }
   },
-  components: {
-    loginCard,
-    registerCard
+  methods: {
+    showPwd() {
+      if (this.pwdType === "password") {
+        this.pwdType = "";
+      } else {
+        this.pwdType = "password";
+      }
+    },
+    // 执行用户登录操作
+    handleLogin() {
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          this.loading = true;
+          this.$store
+            .dispatch("Login", this.loginForm)
+            .then(() => {
+              this.loading = false;
+              this.$router.push({ path: this.redirect || "/" });
+            })
+            .catch(err => {
+              this.loading = false;
+              console.log(err);
+            });
+        } else {
+          this.$message.error("用户信息格式错误！");
+          return false;
+        }
+      });
+    },
+    forgetPasswd() {
+      this.$alert("要不试试 账户：admin，密码：admin", "Oooops", {
+        confirmButtonText: "确定"
+      });
+    },
+    qqLogin() {
+      console.log("QQ Clicked!");
+    },
+    googleLogin() {
+      console.log("Google Clicked!");
+    },
+    QRcodeLogin() {
+      console.log("QR-code Clicked!");
+    },
+    register() {
+      // this.$emit("changeLoginState");
+    }
   }
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-$bg: #f6fafd;
-$light_gray: #eee;
+$bg: url("../../assets/background/login-bg1.jpg");
 $font_dark: #666;
-$font_light: #eee;
+$font_light: rgb(255, 255, 255);
+$box_gray: rgb(191, 191, 191);
+$place-holder: rgb(77, 76, 76);
 /* reset element-ui css */
 .login-container {
   .el-input {
     display: inline-block;
-    height: 47px;
+    height: 66px;
     width: 85%;
     input {
-      background: transparent;
+      background-color: $box_gray;
       border: 0px;
       -webkit-appearance: none;
-      border-radius: 0px;
-      padding: 12px 5px 12px 15px;
-      color: $font_dark;
-      height: 47px;
+      border-radius: 10px;
+      font-size: 16px;
+      padding: 12px 60px 12px 60px;
+      color: #000;
+      height: 66px;
       &:-webkit-autofill {
         -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: #fff !important;
+        -webkit-text-fill-color: #000 !important;
       }
+    }
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      color: $place-holder;
+      font-size: 16px;
     }
   }
 }
 </style>
 
 <style rel="stylesheet/scss" lang="scss">
-$bg: #f6fafd;
+$bg: url("../../assets/background/login-bg1.jpg");
 $dark_gray: #889aa4;
-$light_gray: #eee;
 $font_dark: #666;
-$font_light: #eee;
-$ele_blue: #409eff;
+$font_light: rgb(255, 255, 255);
 .login-container {
   position: fixed;
-  height: 100%;
   width: 100%;
-  background-color: $bg;
-  .login-card {
-    height: 400px;
-    opacity: 0;
-    // 设置过渡动画
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+  height: 100%;
+  background-image: $bg;
+  background-size: 100% 100%;
+  .inner {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.5);
   }
-  .register-card {
-    height: 600px;
-    opacity: 0;
-    // 设置过渡动画
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-  }
-}
-.tips {
-  font-size: 14px;
-  color: #fff;
-  margin-bottom: 10px;
-  span {
-    &:first-of-type {
-      margin-right: 16px;
+  .sub-container {
+    width: 1000px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    .login-form {
+      width: 550px;
+      height: 423px;
+      float: left;
+      border: 0px solid;
+      border-right-color: rgb(191, 191, 191);
+      border-right-width: 1px;
+      .title {
+        margin: 20px 0px;
+        font-size: 38px;
+        font-family: "SourceHanSerifCN";
+        color: $font_light;
+        font-weight: bold;
+        line-height: 1.237;
+      }
+      .el-form-item {
+        margin-bottom: 30px;
+      }
+      .show-pwd {
+        position: relative;
+        left: -60px;
+        margin: auto auto;
+        font-size: 30px;
+        color: $dark_gray;
+        cursor: pointer;
+      }
+      .forgot-passwd {
+        :first-child {
+          margin-bottom: 0px;
+        }
+        :last-child {
+          margin-top: 0px;
+        }
+        p {
+          height: 12px;
+          font-size: 10px;
+          font-family: "SourceHanSansSC";
+          color: $font-light;
+          line-height: 4.7;
+        }
+      }
     }
-  }
-}
-.title {
-  font-size: 26px;
-  font-weight: 400;
-  color: $font_dark;
-  margin: 0px auto 40px auto;
-  text-align: center;
-  font-weight: bold;
-}
-.show-pwd {
-  position: absolute;
-  right: 10px;
-  top: 7px;
-  font-size: 16px;
-  color: $dark_gray;
-  cursor: pointer;
-  user-select: none;
-}
-.user-card {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 400px;
-  max-width: 100%;
-  padding: 35px 35px 15px 35px;
-}
-.text-btn {
-  color: $font_dark;
-  :hover {
-    color: $ele_blue;
-  }
-}
-.particles-js {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-}
-@keyframes slideUp {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+    .login-methods {
+      width: 440px;
+      height: 423px;
+      margin-left: 560px;
+      .title {
+        font-size: 29px;
+        font-family: "SourceHanSerifCN";
+        color: $font_light;
+        font-weight: bold;
+        line-height: 1.621;
+        margin-top: 40px;
+        margin-left: 80px;
+      }
+      .method-container {
+        margin-left: 80px;
+        .svg-container {
+          font-size: 40px;
+        }
+        .login-method-btn {
+          font-size: 15px;
+          font-family: "SourceHanSansSC";
+          color: $font_light;
+          line-height: 3.133;
+        }
+      }
+    }
   }
 }
 </style>
