@@ -11,7 +11,7 @@
           label-position="left"
         >
           <!-- 标题 -->
-          <p class="title">LOGIN
+          <p class="title">LOG IN
             <br>请登录
           </p>
           <!-- 用户名 -->
@@ -40,8 +40,10 @@
           </el-form-item>
           <!-- 登陆按钮 -->
           <div class="forgot-container">
-            <div class="login-btn">登录</div>
-            <div class="forgot-passwd">
+            <div class="login-btn" @click="handleLogin">
+              <p>登录</p>
+            </div>
+            <div class="forgot-passwd" @click="forgotPasswd">
               <p>忘记密码？</p>
               <p>Fotgot Password?</p>
             </div>
@@ -70,7 +72,7 @@
         </div>
       </div>
       <div class="register-container">
-        <a class="register-btn">还没有账户？ 立即注册吧！</a>
+        <a class="register-btn" @click="register">还没有账户？ 立即注册吧！</a>
         <span class="svg-container">
           <svg-icon icon-class="right"/>
         </span>
@@ -81,6 +83,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
+import '@/styles/font.scss'
 import axios from "axios";
 export default {
   name: "Login",
@@ -155,22 +158,23 @@ export default {
         }
       });
     },
-    forgetPasswd() {
+    forgotPasswd() {
       this.$alert("要不试试 账户：admin，密码：admin", "Oooops", {
         confirmButtonText: "确定"
       });
     },
     qqLogin() {
-      console.log("QQ Clicked!");
+      this.$message.error("功能开发中！");
     },
     googleLogin() {
-      console.log("Google Clicked!");
+      this.$message.error("功能开发中！");
     },
     QRcodeLogin() {
-      console.log("QR-code Clicked!");
+      this.$message.error("功能开发中！");
     },
     register() {
       // this.$emit("changeLoginState");
+      this.$message.error("功能开发中！");
     }
   }
 };
@@ -214,7 +218,7 @@ $place-holder: rgb(77, 76, 76);
 <style rel="stylesheet/scss" lang="scss">
 $bg: url("../../assets/background/login-bg1.jpg");
 $dark_gray: #889aa4;
-$font_dark: #666;
+$theme_blue: rgb(52, 128, 255);
 $font_light: rgb(255, 255, 255);
 .login-container {
   position: fixed;
@@ -272,14 +276,27 @@ $font_light: rgb(255, 255, 255);
         cursor: pointer;
       }
       .login-btn {
-        background-color: rgb(52, 128, 255);
+        background-color: $theme_blue;
         width: 117px;
         height: 43px;
-        text-align: center;
-        font-size: 17px;
-        font-family: "SourceHanSansSC";
-        color: rgb(255, 255, 255);
-        line-height: 43px;
+        p {
+          margin: 0 0;
+          position: relative;
+          text-align: center;
+          font-size: 17px;
+          font-family: "SourceHanSansSC";
+          color: rgb(255, 255, 255);
+          line-height: 43px;
+        }
+        cursor: pointer;
+        transition: box-shadow 0.2s ease-out;
+        box-shadow: 0px 0px 0px #ba5d18;
+      }
+      .login-btn:hover {
+        box-shadow: 3px 3px 0px #ba5d18;
+      }
+      .login-btn p:hover {
+        animation: moveup 0.3s ease-out;
       }
       .forgot-container {
         margin-top: 48px;
@@ -299,6 +316,12 @@ $font_light: rgb(255, 255, 255);
           font-style: italic;
           font-family: "SourceHanSansSC";
           color: $font-light;
+          cursor: pointer;
+        }
+        &:hover {
+          p {
+            color: $theme_blue;
+          }
         }
       }
     }
@@ -329,6 +352,9 @@ $font_light: rgb(255, 255, 255);
           font-family: "SourceHanSansSC";
           color: $font_light;
           line-height: 3.133;
+          &:hover {
+            color: $theme_blue;
+          }
         }
       }
     }
@@ -337,12 +363,12 @@ $font_light: rgb(255, 255, 255);
       font-style: italic;
       font-size: 15px;
       font-family: "SourceHanSansSC";
-      color: rgb(52, 128, 255);
+      color: $theme_blue;
       line-height: 3.133;
       text-shadow: 0px 0px 8.46px rgba(129, 129, 129, 0.004);
       a {
         border: 0px solid;
-        border-bottom-color: rgb(52, 128, 255);
+        border-bottom-color: $theme_blue;
         border-bottom-width: 1px;
       }
     }
@@ -355,6 +381,23 @@ $font_light: rgb(255, 255, 255);
   }
   .login-methods {
     width: 100%;
+  }
+}
+@keyframes moveup {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -15px;
+  }
+  50% {
+    top: 0;
+  }
+  75% {
+    top: 15px;
+  }
+  100% {
+    top: 0;
   }
 }
 </style>
