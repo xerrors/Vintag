@@ -83,7 +83,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import '@/styles/font.scss'
+import "@/styles/font.scss";
 import axios from "axios";
 export default {
   name: "Login",
@@ -259,13 +259,17 @@ $font_light: rgb(255, 255, 255);
       .title {
         margin: 20px 0px;
         font-size: 38px;
-        font-family: "SourceHanSerifCN";
+        // font-family: "SourceHanSerifCN";
         color: $font_light;
         font-weight: bold;
         line-height: 1.237;
+      opacity: 0;
+      animation: slideUp 1s forwards;
       }
       .el-form-item {
         margin-bottom: 30px;
+      opacity: 0;
+      animation: slideUp 1s 0.2s forwards;
       }
       .show-pwd {
         position: relative;
@@ -284,7 +288,7 @@ $font_light: rgb(255, 255, 255);
           position: relative;
           text-align: center;
           font-size: 17px;
-          font-family: "SourceHanSansSC";
+          // font-family: "SourceHanSansSC";
           color: rgb(255, 255, 255);
           line-height: 43px;
         }
@@ -301,6 +305,9 @@ $font_light: rgb(255, 255, 255);
       .forgot-container {
         margin-top: 48px;
         display: flex;
+
+      opacity: 0;
+      animation: slideUp 1s 0.4s forwards;
       }
       .forgot-passwd {
         :first-child {
@@ -314,7 +321,7 @@ $font_light: rgb(255, 255, 255);
           height: 12px;
           font-size: 10px;
           font-style: italic;
-          font-family: "SourceHanSansSC";
+          // font-family: "SourceHanSansSC";
           color: $font-light;
           cursor: pointer;
         }
@@ -330,9 +337,11 @@ $font_light: rgb(255, 255, 255);
       width: 40%;
       min-width: 400px;
       height: 423px;
+      opacity: 0;
+      animation: slideUp 1s forwards;
       .title {
         font-size: 29px;
-        font-family: "SourceHanSerifCN";
+        // font-family: "SourceHanSerifCN";
         color: $font_light;
         font-weight: bold;
         line-height: 1.621;
@@ -349,7 +358,7 @@ $font_light: rgb(255, 255, 255);
         .login-method-btn {
           margin-left: 35px;
           font-size: 15px;
-          font-family: "SourceHanSansSC";
+          // font-family: "SourceHanSansSC";
           color: $font_light;
           line-height: 3.133;
           &:hover {
@@ -362,7 +371,7 @@ $font_light: rgb(255, 255, 255);
       margin-top: 90px;
       font-style: italic;
       font-size: 15px;
-      font-family: "SourceHanSansSC";
+      // font-family: "SourceHanSansSC";
       color: $theme_blue;
       line-height: 3.133;
       text-shadow: 0px 0px 8.46px rgba(129, 129, 129, 0.004);
@@ -371,6 +380,8 @@ $font_light: rgb(255, 255, 255);
         border-bottom-color: $theme_blue;
         border-bottom-width: 1px;
       }
+      opacity: 0;
+      animation: slideUp 1s 0.5s forwards;
     }
   }
 }
@@ -398,6 +409,16 @@ $font_light: rgb(255, 255, 255);
   }
   100% {
     top: 0;
+  }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 </style>
