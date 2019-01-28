@@ -1,20 +1,28 @@
-<template>
-  <el-menu class="navbar" mode="horizontal">
-    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
-    <breadcrumb />
-  </el-menu>
-</template>
+顶栏上面的下拉菜单
 
-<script>
+```html
+<el-dropdown class="avatar-container" trigger="click">
+    <div class="avatar-wrapper">
+    <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+    <i class="el-icon-caret-bottom"/>
+    </div>
+    <el-dropdown-menu slot="dropdown" class="user-dropdown">
+    <router-link class="inlineBlock" to="/">
+        <el-dropdown-item>
+        Home
+        </el-dropdown-item>
+    </router-link>
+    <el-dropdown-item divided>
+        <span style="display:block;" @click="logout">LogOut</span>
+    </el-dropdown-item>
+    </el-dropdown-menu>
+</el-dropdown>
+```
+
+```js
 import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
 
 export default {
-  components: {
-    Breadcrumb,
-    Hamburger
-  },
   computed: {
     ...mapGetters([
       'sidebar',
@@ -22,9 +30,6 @@ export default {
     ])
   },
   methods: {
-    toggleSideBar() {
-      this.$store.dispatch('ToggleSideBar')
-    },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
         location.reload() // 为了重新实例化vue-router对象 避免bug
@@ -32,25 +37,13 @@ export default {
     }
   }
 }
-</script>
+```
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+```scss
 .navbar {
   height: 50px;
   line-height: 50px;
   border-radius: 0px !important;
-  .hamburger-container {
-    line-height: 58px;
-    height: 50px;
-    float: left;
-    padding: 0 10px;
-  }
-  .screenfull {
-    position: absolute;
-    right: 90px;
-    top: 16px;
-    color: red;
-  }
   .avatar-container {
     height: 50px;
     display: inline-block;
@@ -75,5 +68,4 @@ export default {
     }
   }
 }
-</style>
-
+```
