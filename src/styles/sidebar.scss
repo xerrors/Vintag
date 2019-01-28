@@ -63,13 +63,14 @@
     }
   }
 
+  // 当侧边栏收起时，完全消失
   .hideSidebar {
     .sidebar-container {
-      width: 36px !important;
+      width: 0px !important;
     }
 
     .main-container {
-      margin-left: 36px;
+      margin-left: 0px;
     }
 
     .submenu-title-noDropdown {
