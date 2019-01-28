@@ -83,17 +83,20 @@ export default {
 
   &__img {
     width: 100%;
+    min-width: 150px;
     height: 150px;
     img {
+      display: block;
+      margin: 0 auto;
       position: relative;
-      top: 18px;
-      left: 103px;
+      top: 12%;
       width: 114px;
       height: 114px;
     }
   }
   &__foo {
     width: 100%;
+    min-width: 150px;
     height: 60px;
   }
   .avatar-name {
