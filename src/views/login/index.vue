@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container">
+  <div class="login-container" :style="{ backgroundImage: 'url(' +bg + ')'}" >
     <div class="inner"/>
     <div class="sub-container">
       <div class="login-form">
@@ -103,6 +103,7 @@ export default {
       }
     };
     return {
+      bg: require("../../assets/background/login-bg1.jpg"),
       eyeState: "eye-close",
       loginForm: {
         username: "",
@@ -181,7 +182,6 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-$bg: url("../../assets/background/login-bg1.jpg");
 $font_dark: #666;
 $font_light: rgb(255, 255, 255);
 $box_gray: rgb(191, 191, 191);
@@ -202,7 +202,7 @@ $place-holder: rgb(77, 76, 76);
       color: #000;
       height: 66px;
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px #000 inset !important;
         -webkit-text-fill-color: #000 !important;
       }
     }
@@ -224,7 +224,6 @@ $font_light: rgb(255, 255, 255);
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: $bg;
   background-size: 100% 100%;
   .inner {
     width: 100%;
@@ -259,17 +258,17 @@ $font_light: rgb(255, 255, 255);
       .title {
         margin: 20px 0px;
         font-size: 38px;
-        // font-family: "SourceHanSerifCN";
+        font-family: "SourceHanSerifCN";
         color: $font_light;
         font-weight: bold;
         line-height: 1.237;
-      opacity: 0;
-      animation: slideUp 1s forwards;
+        opacity: 0;
+        animation: slideUp 1s forwards;
       }
       .el-form-item {
         margin-bottom: 30px;
-      opacity: 0;
-      animation: slideUp 1s 0.2s forwards;
+        opacity: 0;
+        animation: slideUp 1s 0.2s forwards;
       }
       .show-pwd {
         position: relative;
@@ -288,7 +287,7 @@ $font_light: rgb(255, 255, 255);
           position: relative;
           text-align: center;
           font-size: 17px;
-          // font-family: "SourceHanSansSC";
+          font-family: "SourceHanSansSC";
           color: rgb(255, 255, 255);
           line-height: 43px;
         }
@@ -306,8 +305,8 @@ $font_light: rgb(255, 255, 255);
         margin-top: 48px;
         display: flex;
 
-      opacity: 0;
-      animation: slideUp 1s 0.4s forwards;
+        opacity: 0;
+        animation: slideUp 1s 0.4s forwards;
       }
       .forgot-passwd {
         :first-child {
@@ -321,7 +320,7 @@ $font_light: rgb(255, 255, 255);
           height: 12px;
           font-size: 10px;
           font-style: italic;
-          // font-family: "SourceHanSansSC";
+          font-family: "SourceHanSansSC";
           color: $font-light;
           cursor: pointer;
         }
@@ -341,7 +340,7 @@ $font_light: rgb(255, 255, 255);
       animation: slideUp 1s forwards;
       .title {
         font-size: 29px;
-        // font-family: "SourceHanSerifCN";
+        font-family: "SourceHanSerifCN";
         color: $font_light;
         font-weight: bold;
         line-height: 1.621;
@@ -358,7 +357,7 @@ $font_light: rgb(255, 255, 255);
         .login-method-btn {
           margin-left: 35px;
           font-size: 15px;
-          // font-family: "SourceHanSansSC";
+          font-family: "SourceHanSansSC";
           color: $font_light;
           line-height: 3.133;
           &:hover {
@@ -371,12 +370,11 @@ $font_light: rgb(255, 255, 255);
       margin-top: 90px;
       font-style: italic;
       font-size: 15px;
-      // font-family: "SourceHanSansSC";
+      font-family: "SourceHanSansSC";
       color: $theme_blue;
       line-height: 3.133;
       text-shadow: 0px 0px 8.46px rgba(129, 129, 129, 0.004);
       a {
-        border: 0px solid;
         border-bottom-color: $theme_blue;
         border-bottom-width: 1px;
       }
@@ -388,7 +386,8 @@ $font_light: rgb(255, 255, 255);
 @media (max-width: 1250px) {
   .login-form {
     width: 100%;
-    border: 0px solid;
+    border-bottom-color: rgb(191, 191, 191);
+    border-bottom-width: 1px;
   }
   .login-methods {
     width: 100%;
