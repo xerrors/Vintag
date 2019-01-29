@@ -131,6 +131,28 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/setting',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Setting',
+        component: () => import('@/views/setting/index'),
+        meta: { title: 'Setting', icon: 'setting' }
+      }
+    ]
+  },
+  {
+    path: 'Coding',
+    component: Layout,
+    children: [
+      {
+        path: 'https://git.dev.tencent.com/Xerrors/Vintag.git',
+        meta: { title: 'Coding', icon: 'link' }
+      }
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 
