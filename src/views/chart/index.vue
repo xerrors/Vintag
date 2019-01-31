@@ -34,21 +34,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $chart-height: 400px;
 $chart-width: 600px;
 .chart-container {
-  $bg: #ffffff;
-  background-color: $bg;
+  background:linear-gradient(#091528, #1d252e);;
   width: 100%;
   height: 100%;
   .ch-theme-div {
     width: $chart-width;
     margin: 0 auto;
     margin-bottom: 40px;
-    h3 {
-      text-align: center;
-    }
     .ch-theme-btn {
       width: 100%;
       margin: 0 auto;
@@ -59,6 +55,9 @@ $chart-width: 600px;
   width: 600px;
   height: 400px;
   margin: 0 auto;
+  border: #21334e solid 1px;
+  background-color: rgba(10, 10, 10, 0);
+  box-shadow: 0 0 14px #000;
 }
 </style>
 
