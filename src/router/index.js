@@ -40,6 +40,28 @@ export const constantRouterMap = [
   },
 
   {
+    path: '/database',
+    component: Layout,
+    redirect: '/database/database_1',
+    name: 'Example',
+    meta: { title: '数据库管理', icon: 'database' },
+    children: [
+      {
+        path: 'database_1',
+        name: 'db_1',
+        component: () => import('@/views/empty'),
+        meta: { title: '数据库 1', icon: 'database' }
+      },
+      {
+        path: 'database_2',
+        name: 'db_2',
+        component: () => import('@/views/empty'),
+        meta: { title: '数据库 2', icon: 'database' }
+      }
+    ]
+  },
+
+  {
     path: '/example',
     component: Layout,
     redirect: '/example/table',
@@ -139,7 +161,7 @@ export const constantRouterMap = [
         path: 'index',
         name: 'Setting',
         component: () => import('@/views/setting/index'),
-        meta: { title: 'Setting', icon: 'setting' }
+        meta: { title: '设置', icon: 'setting' }
       }
     ]
   },

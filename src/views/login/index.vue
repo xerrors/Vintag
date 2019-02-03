@@ -62,7 +62,7 @@
           <span class="svg-container">
             <svg-icon icon-class="google"/>
           </span>
-          <a class="login-method-btn" @click="googleLogin">Google账号登录</a>
+          <a class="login-method-btn" @click="googleLogin">Google账户登录</a>
         </div>
         <div class="method-container">
           <span class="svg-container">
@@ -353,6 +353,7 @@ $font_light: rgb(255, 255, 255);
         .svg-container {
           width: 43px;
           font-size: 43px;
+          color: $theme_blue;
         }
         .login-method-btn {
           margin-left: 35px;
