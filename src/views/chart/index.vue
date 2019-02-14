@@ -1,10 +1,7 @@
 <template>
   <div class="chart-container">
-    <div class="ch-theme-div">
-      <h3>更换主题</h3>
-      <ch-theme-btn class="ch-theme-btn"/>
-    </div>
     <demo-chart :chartdata="chartdata"/>
+    <demo-circle :chartdata="chartdata"/>
   </div>
 </template>
 
@@ -12,10 +9,12 @@
 /* eslint-disable */
 import chThemeBtn from "@/components/Shared/chThemeBtn";
 import demoChart from "@/views/charts/demoChart";
+import demoCircle from "@/views/charts/demoCircle"
 import { randomData } from "@/randomData.js";
 export default {
   components: {
     demoChart,
+    demoCircle,
     chThemeBtn
   },
   computed: {
@@ -41,15 +40,6 @@ $chart-width: 600px;
   background:linear-gradient(#091528, #1d252e);;
   width: 100%;
   height: 100%;
-  .ch-theme-div {
-    width: $chart-width;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    .ch-theme-btn {
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
 }
 .charts {
   width: 600px;

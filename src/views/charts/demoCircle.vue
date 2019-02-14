@@ -7,88 +7,90 @@
 <script>
 /* eslint-disable */
 import echarts from "echarts";
-import "echarts/theme/macarons.js";
 export default {
+  props: ["chartdata"],
   name: "demoCircle",
   components: {},
   data() {
     return {
-      // 初始化空对象
       chart: null,
-      // 初始化图表配置
-      legend: ["A", "B", "C", "D", "E"],
-      opinionData: [
-        {
-          value: 26,
-          name: "A"
-        },
-        {
-          value: 31,
-          name: "B"
-        },
-        {
-          value: 18,
-          name: "C"
-        },
-        {
-          value: 28,
-          name: "D"
-        },
-        {
-          value: 21,
-          name: "E"
-        }
-      ]
+      chartType: "pie"
     };
   },
   computed: {
     theme() {
       return this.$store.getters.theme;
     },
+    axis() {
+      var axisData = this.chartdata.axis;
+      let axis = {};
+      axis.data = [];
+      if (axisData.x.length != 0) {
+        axis.data = axisData.x;
+      } else {
+        for (var i = 1; i <= this.chartdata.dataLength; i++) {
+          axis.data.push(i);
+        }
+      }
+      return axis;
+    },
+    innerData() {
+      var data = [{}];
+      for (var i = 0; i < this.chartdata.legendLen; i++) {
+        let tempData = {};
+        tempData.value = this.chartdata.data[i][1];
+        tempData.name = this.chartdata.legend[i];
+        data.push(tempData);
+      }
+      return data.sort(function(a, b) {
+        return a.value - b.value;
+      });
+    },
     options() {
       return {
         title: {
-          text: "此处为标题",
-          subtext: "副标题",
-          x: "center"
-        },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%):"
+          text: this.chartdata.title,
+          top: "3%",
+          left: "3%",
+          radius: "55%",
+          center: ["50%", "50%"]
         },
         legend: {
-          x: "center",
-          bottom: "10px",
-          data: this.legend
+          x: "right",
+          data: this.chartdata.legend,
+          top: "3%",
+          right: "3%"
         },
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true
-            },
-            magicType: {
-              show: true,
-              type: ["pie"]
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true
+        },
+        tooltip: {
+          trigger: "item"
+        },
+        series: {
+          type: this.chartType,
+          name: this.chartdata.title,
+          data: this.innerData,
+          radius: "40%",
+          roseType: "radius",
+          label: {
+            normal: {
+              formatter: "   {b|{b}}   {hr|}\n {per|{d}%} ",
+              borderColor: "#aaa",
+              borderWidth: 1,
+              borderRadius: 4,
+              rich: {
+                b: {
+                  fontSize: 14
+                },
+                per: {padding: [4, 4]}
+              }
             }
           }
-        },
-        calculable: true,
-        series: [
-          {
-            name: "种类",
-            type: "pie",
-            radius: [30, 100],
-            center: ["50%", "50%"],
-            roseType: "area",
-            data: this.opinionData,
-            animationType: "scale",
-            animationEasing: "elasticOut",
-            animationDelay: function(idx) {
-              return Math.random() * 200;
-            }
-          }
-        ]
+        }
       };
     }
   },

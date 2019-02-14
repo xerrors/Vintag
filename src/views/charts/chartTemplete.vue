@@ -1,6 +1,6 @@
 <template>
   <div class="charts chart-left">
-    <div id="chartTemplete" style=" width:100%; height:100%;"/>
+    <div id="demoCircle" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
@@ -8,32 +8,47 @@
 /* eslint-disable */
 import echarts from "echarts";
 export default {
-  name: "chartTemplete",
+  props: ['chartdata'],
+  name: "demoCircle",
   components: {},
   data() {
     return {
-      name: "chartTemplete",
       chart: null,
-      chartType: "line", // 表格类型
-      title: "", // 标题
-      data: [], // 数据
-      axisData: {}, // 坐标轴数据
-      legend: [] // 就是那个数据分类吧
+      chartType: "circle",
     };
   },
   computed: {
-    // 主题
+    axis() {
+      var axisData = this.chartdata.axis
+      var axis = {
+        x: {},
+        y: {}
+      }
+      axis.x.data = []
+      if(axisData.x.length != 0) {
+        axis.x.data = axisData.x
+      } else {
+        for(var i = 1; i <= this.chartdata.dataLength; i++){
+          axis.x.data.push(i)
+        }
+      }
+      if(axisData.y.length != 0) {
+        axis.y.data = axisData.y
+      } else {
+        axis.y = {}
+      }
+      return axis
+    },
     theme() {
       return this.$store.getters.theme;
     },
-    // 不知道怎么翻译的玩意儿
     mySeries() {
       var mySeries = [];
-      for (var i = 0; i < this.legend.length; i++) {
+      for (var i = 0; i < this.chartdata.legendLen; i++) {
         mySeries.push({
           type: this.chartType,
-          name: this.legend[i],
-          data: this.data[i]
+          name: this.chartdata.legend[i],
+          data: this.chartdata.data[i]
         });
       }
       return mySeries;
@@ -41,20 +56,27 @@ export default {
     options() {
       return {
         title: {
-          text: this.title,
-          top: "10px",
-          left: "20px"
+          text: this.chartdata.title,
+          top: "3%",
+          left: "3%"
         },
         legend: {
-          x: "center",
-          data: this.legend,
-          top: "10px"
+          x: "right",
+          data: this.chartdata.legend,
+          top: "3%",
+          right: "3%"
         },
-        xAxis: {
-          type: "category",
-          data: this.axisData.x
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
         },
-        yAxis: {},
+        tooltip: {
+          trigger: "axis"
+        },
+        xAxis: this.axis.x,
+        yAxis: this.axis.y,
         series: this.mySeries
       };
     }
@@ -69,7 +91,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      this.drawGraph(this.name);
+      this.drawGraph("demoCircle");
     });
   }
 };
