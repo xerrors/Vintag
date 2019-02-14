@@ -78,13 +78,14 @@ export default {
           roseType: "radius",
           label: {
             normal: {
-              formatter: "   {b|{b}}   {hr|}\n {per|{d}%} ",
+              formatter: "  {b|{b}}  {hr|}\n  {per|{d}%}  ",
               borderColor: "#aaa",
               borderWidth: 1,
               borderRadius: 4,
               rich: {
                 b: {
-                  fontSize: 14
+                  fontSize: 14,
+                  padding: [4, 4]
                 },
                 per: {padding: [4, 4]}
               }

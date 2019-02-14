@@ -1,7 +1,9 @@
 <template>
-  <div class="chart-container">
-    <demo-chart :chartdata="chartdata"/>
-    <demo-circle :chartdata="chartdata"/>
+  <div class="container">
+    <div class="chart-container">
+      <demo-chart :chartdata="chartdata"/>
+      <demo-circle :chartdata="chartdata"/>
+    </div>
   </div>
 </template>
 
@@ -9,7 +11,7 @@
 /* eslint-disable */
 import chThemeBtn from "@/components/Shared/chThemeBtn";
 import demoChart from "@/views/charts/demoChart";
-import demoCircle from "@/views/charts/demoCircle"
+import demoCircle from "@/views/charts/demoCircle";
 import { randomData } from "@/randomData.js";
 export default {
   components: {
@@ -36,10 +38,23 @@ export default {
 <style lang="scss">
 $chart-height: 400px;
 $chart-width: 600px;
-.chart-container {
-  background:linear-gradient(#091528, #1d252e);;
+.container {
+  background: linear-gradient(#091528, #1d252e);
+  position: fixed;
   width: 100%;
   height: 100%;
+}
+.chart-container {
+  width: 1600px;
+  height: 900px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  min-width: 1600px;
+  min-height: 900px;
 }
 .charts {
   width: 600px;
