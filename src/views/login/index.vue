@@ -149,25 +149,25 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
-          // this.$store
-          //   .dispatch("Login", this.loginForm)
-          //   .then(() => {
-          //     this.loading = false;
-          //     this.$router.push({ path: this.redirect || "/" });
-          //   })
-          //   .catch(err => {
-          //     this.loading = false;
-          //     console.log(err);
-          //   });
           this.$store
-            .dispatch("Test")
+            .dispatch("Login", this.loginForm)
             .then(() => {
               this.loading = false;
+              this.$router.push({ path: this.redirect || "/" });
             })
             .catch(err => {
               this.loading = false;
               console.log(err);
             });
+          // this.$store
+          //   .dispatch("Test")
+          //   .then(() => {
+          //     this.loading = false;
+          //   })
+          //   .catch(err => {
+          //     this.loading = false;
+          //     console.log(err);
+          //   });
         } else {
           this.$message.error("用户信息格式错误！");
           return false;
@@ -217,7 +217,7 @@ $place-holder: rgb(77, 76, 76);
       color: #000;
       height: 66px;
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px #000 inset !important;
+        box-shadow: 0 0 0px 1000px #000 inset !important;
         -webkit-text-fill-color: #000 !important;
       }
     }

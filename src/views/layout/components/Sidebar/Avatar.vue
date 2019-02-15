@@ -7,23 +7,29 @@
       <div class="avatar__nav-text">LOGOUT</div>
     </div>
     <div class="avatar__img">
-      <img src="@/assets/img/avatar.png">
+      <img :src="avatar+'?imageView2/1/w/80/h/80'">
     </div>
     <div class="avatar__foo">
       <p class="avatar-name">{{ name }}</p>
-      <p class="avatar-identify">{{ identity }}</p>
+      <p class="avatar-identify">{{ roles }}</p>
     </div>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      name: "瓦塔撒",
-      identity: "user"
-    };
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'name',
+      'roles',
+      'avatar'
+    ])
   },
   methods: {
     logout() {
@@ -92,6 +98,7 @@ export default {
       top: 12%;
       width: 114px;
       height: 114px;
+      border-radius:50%;
     }
   }
   &__foo {

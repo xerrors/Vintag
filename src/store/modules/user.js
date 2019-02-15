@@ -1,14 +1,13 @@
 import { register, logout, getInfo } from '@/api/login'
 import { login } from '@/api/login'
 import { getToken, setToken, removeToken, removeTheme } from '@/utils/auth'
-import { test } from '@/api/login'
 
 const user = {
   state: {
     token: getToken(),
     name: '',
     avatar: '',
-    roles: []
+    roles: ''
   },
 
   mutations: {
@@ -48,6 +47,7 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(res => {
+          console.log(res)
           const data = res.data
           setToken(data.token)
           commit('SET_TOKEN', data.token)
@@ -58,21 +58,11 @@ const user = {
       })
     },
 
-    Test() {
-      return new Promise((resolve, reject) => {
-        test().then(res => {
-          console.log(res.data)
-          resolve()
-        }).catch(err => {
-          reject(err)
-        })
-      })
-    },
-
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(res => {
+          console.log(res)
           const data = res.data
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', data.roles)
