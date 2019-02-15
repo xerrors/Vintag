@@ -12,7 +12,7 @@ export function validURL(textval) {
 
 /* 合法密码*/
 export function validPassword(str) {
-  const reg = /^[a-zA-Z]\w{5,17}$/
+  const reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,21}$/
   return reg.test(str)
 }
 

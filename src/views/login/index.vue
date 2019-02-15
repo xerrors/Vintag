@@ -1,6 +1,5 @@
 <template>
   <div class="login-container" :style="{ backgroundImage: 'url(' +bg + ')'}" >
-    <el-button @click='test'/>
     <div class="inner"/>
     <div class="sub-container">
       <div class="login-form">
@@ -41,7 +40,7 @@
           </el-form-item>
           <!-- 登陆按钮 -->
           <div class="forgot-container">
-            <div class="login-btn" @click="handleLogin">
+            <div class="login-btn" role="button" @click="handleLogin">
               <p>登录</p>
             </div>
             <div class="forgot-passwd" @click="forgotPasswd">
@@ -130,11 +129,6 @@ export default {
     }
   },
   methods: {
-    test() {
-      axios.get('https://easy-mock.com/mock/5c482095e2637d455e6c9071/example/mock').then(res => {
-        console.log(res.data);
-      })
-    },
     showPwd() {
       if (this.pwdType === "password") {
         this.pwdType = "";
@@ -159,15 +153,6 @@ export default {
               this.loading = false;
               console.log(err);
             });
-          // this.$store
-          //   .dispatch("Test")
-          //   .then(() => {
-          //     this.loading = false;
-          //   })
-          //   .catch(err => {
-          //     this.loading = false;
-          //     console.log(err);
-          //   });
         } else {
           this.$message.error("用户信息格式错误！");
           return false;
@@ -180,17 +165,18 @@ export default {
       });
     },
     qqLogin() {
-      this.$message.error("功能开发中！");
+      this.$message("功能开发中！");
     },
     googleLogin() {
-      this.$message.error("功能开发中！");
+      this.$message("功能开发中！");
     },
     QRcodeLogin() {
-      this.$message.error("功能开发中！");
+      this.$message("功能开发中！");
     },
     register() {
       // this.$emit("changeLoginState");
-      this.$message.error("功能开发中！");
+      // this.$message("功能开发中！");
+      this.$router.push('/register')
     }
   }
 };
