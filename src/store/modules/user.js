@@ -27,12 +27,11 @@ const user = {
 
   actions: {
     // 注册
-    Register({
-      commit
-    }, userForm) {
+    Register({ commit }, userForm) {
       return new Promise((resolve, reject) => {
         register(userForm).then(res => {
           // 只是演示
+          console.log(res)
           const data = res.data
           setToken(data.token)
           commit('SET_TOKEN', data.token)

@@ -19,7 +19,7 @@
           <span class="svg-container">
             <svg-icon icon-class="google"/>
           </span>
-          <a class="login-method-btn" @click="googleLogin">Google账户登录</a>
+          <a class="login-method-btn" style="margin-right: 20px;" @click="googleLogin">Google账户登录</a>
         </div>
         <el-form
           ref="userForm"
@@ -32,7 +32,7 @@
         >
           <!-- 用户名 -->
           <el-form-item prop="username">
-            <P>用户名 Username</P>
+            <P>用户名</P>
             <el-input
               v-model.trim="userForm.username"
               name="username"
@@ -42,7 +42,7 @@
           </el-form-item>
           <!-- 密码 -->
           <el-form-item prop="password">
-            <p>密码 Password</p>
+            <p>密码</p>
             <el-input
               :type="pwdType"
               v-model="userForm.password"
@@ -54,25 +54,25 @@
             </span>
           </el-form-item>
           <el-form-item prop="realname">
-            <p>真实姓名 Realname</p>
+            <p>真实姓名</p>
             <el-input v-model.trim="userForm.realname" placeholder="E.g.张三"/>
           </el-form-item>
           <el-form-item prop="telephone">
-            <p>手机号码 Telephone</p>
+            <p>手机号码</p>
             <el-input v-model.trim="userForm.telephone" placeholder="E.g.1374567XXXX"/>
           </el-form-item>
           <el-form-item prop="email">
-            <p>邮箱 Email</p>
+            <p>邮箱</p>
             <el-input v-model.trim="userForm.email" placeholder="E.g.123456@qq.com"/>
           </el-form-item>
-          <div class="official-servise">
-            <el-checkbox v-model="hasReaded" style="display: inline">我已阅读</el-checkbox>
-            <el-button style="display: inline" type="text" @click="viewServise">服务条款</el-button>
-          </div>
-          <div class="register-btn" role="button" @click="handleRegister">
-            <p>注册</p>
-          </div>
         </el-form>
+        <div class="official-servise">
+          <el-checkbox v-model="hasReaded" style="display: inline">我已阅读并接受</el-checkbox>
+          <el-button style="display: inline" type="text" @click="viewServise">服务条款</el-button>
+        </div>
+        <div class="register-btn" role="button" @click="handleRegister">
+          <p>注册</p>
+        </div>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@ export default {
     };
     const validatePassword = (rule, value, callback) => {
       if (!validPassword(value)) {
-        callback(new Error("密码应为6-21字母和数字组成"));
+        callback(new Error("密码应为5-21字母和数字组成"));
       } else {
         callback();
       }
@@ -353,7 +353,7 @@ $font_light: rgb(255, 255, 255);
         cursor: pointer;
       }
       .official-servise {
-        width: 145px;
+        width: 185px;
         margin: 0 auto;
         opacity: 0;
         margin-bottom: 10px;
