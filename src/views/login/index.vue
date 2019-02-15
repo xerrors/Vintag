@@ -1,5 +1,6 @@
 <template>
   <div class="login-container" :style="{ backgroundImage: 'url(' +bg + ')'}" >
+    <el-button @click='test'/>
     <div class="inner"/>
     <div class="sub-container">
       <div class="login-form">
@@ -129,6 +130,11 @@ export default {
     }
   },
   methods: {
+    test() {
+      axios.get('https://easy-mock.com/mock/5c482095e2637d455e6c9071/example/mock').then(res => {
+        console.log(res.data);
+      })
+    },
     showPwd() {
       if (this.pwdType === "password") {
         this.pwdType = "";
@@ -143,11 +149,20 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
+          // this.$store
+          //   .dispatch("Login", this.loginForm)
+          //   .then(() => {
+          //     this.loading = false;
+          //     this.$router.push({ path: this.redirect || "/" });
+          //   })
+          //   .catch(err => {
+          //     this.loading = false;
+          //     console.log(err);
+          //   });
           this.$store
-            .dispatch("Login", this.loginForm)
+            .dispatch("Test")
             .then(() => {
               this.loading = false;
-              this.$router.push({ path: this.redirect || "/" });
             })
             .catch(err => {
               this.loading = false;

@@ -19,6 +19,13 @@ export function getInfo(token) {
   })
 }
 
+export function test() {
+  return request({
+    url: '/mock',
+    method: 'get'
+  })
+}
+
 export function logout() {
   return request({
     url: '/user/logout',

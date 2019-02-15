@@ -7,8 +7,9 @@
 <script>
 /* eslint-disable */
 import echarts from "echarts";
+import { randomData } from "@/randomData.js";
 export default {
-  props: ['chartdata'],
+  // props: ['chartdata'],
   name: "demoChart",
   components: {},
   data() {
@@ -18,6 +19,9 @@ export default {
     };
   },
   computed: {
+    chartdata() {
+      return randomData();
+    },
     axis() {
       var axisData = this.chartdata.axis
       var axis = {

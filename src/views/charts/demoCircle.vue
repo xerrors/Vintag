@@ -7,8 +7,9 @@
 <script>
 /* eslint-disable */
 import echarts from "echarts";
+import { randomData } from "@/randomData.js";
 export default {
-  props: ["chartdata"],
+  // props: ["chartdata"],
   name: "demoCircle",
   components: {},
   data() {
@@ -18,6 +19,9 @@ export default {
     };
   },
   computed: {
+    chartdata() {
+      return randomData();
+    },
     theme() {
       return this.$store.getters.theme;
     },
@@ -78,7 +82,7 @@ export default {
           roseType: "radius",
           label: {
             normal: {
-              formatter: "  {b|{b}}  {hr|}\n  {per|{d}%}  ",
+              formatter: "   {b|{b}}   {hr|}\n  {per|{d}%}  ",
               borderColor: "#aaa",
               borderWidth: 1,
               borderRadius: 4,

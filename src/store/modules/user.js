@@ -1,5 +1,7 @@
-import { register, login, logout, getInfo } from '@/api/login'
+import { register, logout, getInfo } from '@/api/login'
+import { login } from '@/api/login'
 import { getToken, setToken, removeToken, removeTheme } from '@/utils/auth'
+import { test } from '@/api/login'
 
 const user = {
   state: {
@@ -26,7 +28,9 @@ const user = {
 
   actions: {
     // 注册
-    Register({ commit }, userForm) {
+    Register({
+      commit
+    }, userForm) {
       return new Promise((resolve, reject) => {
         register(userForm).then(res => {
           // 只是演示
@@ -50,6 +54,17 @@ const user = {
           resolve()
         }).catch(error => {
           reject(error)
+        })
+      })
+    },
+
+    Test() {
+      return new Promise((resolve, reject) => {
+        test().then(res => {
+          console.log(res.data)
+          resolve()
+        }).catch(err => {
+          reject(err)
         })
       })
     },
