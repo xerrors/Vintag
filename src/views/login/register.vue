@@ -8,18 +8,24 @@
           <p class="cn">注册</p>
         </div>
         <div class="other-methods">
-          <p>使用第三方账户登录</p>
-          <span class="right">
-            <svg-icon icon-class="right"/>
-          </span>
-          <span class="svg-container">
-            <svg-icon icon-class="qq"/>
-          </span>
-          <a class="login-method-btn" @click="qqLogin">QQ账户登录</a>
-          <span class="svg-container">
-            <svg-icon icon-class="google"/>
-          </span>
-          <a class="login-method-btn" style="margin-right: 20px;" @click="googleLogin">Google账户登录</a>
+          <div class="method-container other-methods__title">
+            <p>使用第三方账户登录</p>
+            <span class="right">
+              <svg-icon icon-class="right"/>
+            </span>
+          </div>
+          <div class="method-container other-methods__qq">
+            <span class="svg-container">
+              <svg-icon icon-class="qq"/>
+            </span>
+            <a class="login-method-btn" @click="qqLogin">QQ账户登录</a>
+          </div>
+          <div class="method-container other-method__google">
+            <span class="svg-container">
+              <svg-icon icon-class="google"/>
+            </span>
+            <a class="login-method-btn" style="margin-right: 20px;" @click="googleLogin">Google账户登录</a>
+          </div>
         </div>
         <el-form
           ref="userForm"
@@ -232,6 +238,7 @@ $place-holder: rgb(106, 106, 106);
   .el-input {
     display: inline-block;
     width: 85%;
+    max-width: 510px;
     input {
       color: white;
       background-color: rgba(0, 0, 0, 0);
@@ -261,9 +268,7 @@ $dark_gray: #889aa4;
 $theme_blue: rgb(52, 128, 255);
 $font_light: rgb(255, 255, 255);
 .register-container {
-  position: fixed;
   width: 100%;
-  height: 100%;
   background-color: rgb(20, 20, 20);
   .sub-container {
     width: 80%;
@@ -280,15 +285,7 @@ $font_light: rgb(255, 255, 255);
     flex-flow: row wrap;
     justify-content: center;
     .other-methods {
-      width: 600px;
-      height: 50px;
-      display: flex;
-      border: 0px solid;
-      border-left-color: rgb(52, 128, 255);
-      border-left-width: 5px;
       background-color: black;
-      justify-content: space-between;
-      align-items: center;
       font-size: 15px;
       font-family: "SourceHanSansSC";
       color: $font_light;
@@ -296,12 +293,10 @@ $font_light: rgb(255, 255, 255);
       margin: 30px 0;
       opacity: 0;
       animation: slideUp 1s 0.1s forwards;
-      p {
-        margin-left: 40px;
-      }
-      .right {
-        margin-right: 60px;
-        margin-left: 20px;
+      .method-container {
+        height: 50px;
+        display: flex;
+        align-items: center;
       }
       .svg-container {
         width: 26px;
@@ -318,8 +313,6 @@ $font_light: rgb(255, 255, 255);
     // 注册表单
     .register-form {
       color: white;
-      position: relative;
-      left: 45px;
       .title {
         .en {
           margin: 0;
@@ -329,8 +322,6 @@ $font_light: rgb(255, 255, 255);
           margin: 0;
           font-size: 34px;
         }
-        position: relative;
-        left: -100px;
         font-family: "SourceHanSerifCN";
         font-weight: bold;
         opacity: 0;
@@ -388,14 +379,84 @@ $font_light: rgb(255, 255, 255);
     }
   }
 }
+@media (max-height: 1200px) and (max-width: 1250px) {
+  .register-container {
+    height: 1200px;
+  }
+}
+@media (max-height: 1200px) and (min-width: 1250px) {
+  .register-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (min-height: 1200px) {
+  .register-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
 @media (max-width: 1250px) {
   .register-form {
-    width: 100%;
-    border-bottom-color: rgb(191, 191, 191);
-    border-bottom-width: 1px;
+    min-width: 250px;
   }
-  .login-methods {
+  .title {
+    margin: 0 auto;
+    width: 70px;
+  }
+  .other-methods {
     width: 100%;
+    height: 180px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 0px solid;
+    border-top-color: rgb(52, 128, 255);
+    border-top-width: 5px;
+    .method-container {
+      width: 100%;
+      margin-left: 20px;
+    }
+    .right {
+      display: none;
+    }
+  }
+  .show-pwd {
+    display: none;
+  }
+  .el-input {
+    width: 100%;
+  }
+}
+@media (min-width: 1250px) {
+  .register-form {
+    position: relative;
+    left: 45px;
+  }
+  .title {
+    position: relative;
+    left: -100px;
+  }
+  .other-methods {
+    width: 600px;
+    height: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 0px solid;
+    border-left-color: rgb(52, 128, 255);
+    border-left-width: 5px;
+    p {
+      margin-left: 40px;
+    }
+    .right {
+      margin-right: 60px;
+      margin-left: 20px;
+    }
   }
 }
 @keyframes moveup {

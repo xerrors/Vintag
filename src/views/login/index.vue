@@ -216,7 +216,7 @@ $place-holder: rgb(77, 76, 76);
 }
 </style>
 
-<style rel="stylesheet/scss" lang="scss">
+<style rel="stylesheet/scss" lang="scss" scoped>
 $bg: url("../../assets/background/login-bg1.jpg");
 $dark_gray: #889aa4;
 $theme_blue: rgb(52, 128, 255);
@@ -243,19 +243,10 @@ $font_light: rgb(255, 255, 255);
     left: 0;
     right: 0;
     margin: auto;
-    // flex 布局
-    display: -webkit-flex; /* Safari */
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
     // 登录表单
     .login-form {
-      width: 60%;
       min-width: 400px;
       height: 423px;
-      border: 0px solid;
-      border-right-color: rgb(191, 191, 191);
-      border-right-width: 1px;
       .title {
         margin: 20px 0px;
         font-size: 38px;
@@ -388,11 +379,25 @@ $font_light: rgb(255, 255, 255);
 @media (max-width: 1250px) {
   .login-form {
     width: 100%;
-    border-bottom-color: rgb(191, 191, 191);
-    border-bottom-width: 1px;
+    max-width: 600px;
   }
   .login-methods {
-    width: 100%;
+    display: none;
+  }
+}
+@media (min-width: 1250px) {
+  .sub-container {
+    // flex 布局
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .login-form {
+    width: 60%;
+    border: 0px solid;
+    border-right-color: rgb(191, 191, 191);
+    border-right-width: 1px;
   }
 }
 @keyframes moveup {
