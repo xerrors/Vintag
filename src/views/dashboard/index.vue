@@ -5,6 +5,7 @@
       <ch-theme-btn/>
       <h3>表格界面</h3>
       <el-button type="primary" size="medium" icon="el-icon-caret-right" @click="showCharts">表格展示</el-button>
+      <router-view/>
     </div>
   </div>
 </template>
@@ -12,14 +13,14 @@
 <script>
 /* eslint-disable */
 import { mapGetters } from "vuex";
-import chThemeBtn from '@/components/Shared/chThemeBtn'
+import chThemeBtn from "@/components/Shared/chThemeBtn";
 export default {
   name: "Dashboard",
   components: {
-    chThemeBtn,
+    chThemeBtn
   },
   computed: {
-    ...mapGetters(["name", "roles"]),
+    ...mapGetters(["name", "roles"])
   },
   methods: {
     showCharts() {

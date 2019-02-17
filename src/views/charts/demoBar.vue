@@ -1,6 +1,6 @@
 <template>
   <div class="charts chart-left">
-    <div id="demoChart" style=" width:100%; height:100%;"/>
+    <div id="demoBar" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
@@ -10,12 +10,12 @@ import echarts from "echarts";
 import { randomData } from "@/randomData.js";
 export default {
   // props: ['chartdata'],
-  name: "demoChart",
+  name: "demoBar",
   components: {},
   data() {
     return {
       chart: null,
-      chartType: "line",
+      chartType: "bar",
     };
   },
   computed: {
@@ -50,8 +50,6 @@ export default {
       var mySeries = [];
       for (var i = 0; i < this.chartdata.legendLen; i++) {
         mySeries.push({
-          stack: "总量",
-          areaStyle: {},
           type: this.chartType,
           name: this.chartdata.legend[i],
           data: this.chartdata.data[i]
@@ -97,7 +95,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      this.drawGraph("demoChart");
+      this.drawGraph("demoBar");
     });
   }
 };

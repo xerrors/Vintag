@@ -15,7 +15,7 @@
       <div class="right">
         <demo-circle class="chart1"/>
         <demo-chart class="chart2"/>
-        <demo-circle class="chart3"/>
+        <demo-bar class="chart3"/>
       </div>
     </div>
   </div>
@@ -24,13 +24,12 @@
 <script>
 /* eslint-disable */
 import chThemeBtn from "@/components/Shared/chThemeBtn";
-import demoChart from "@/views/charts/demoChart";
-import demoCircle from "@/views/charts/demoCircle";
 import { randomData } from "@/randomData.js";
 export default {
   components: {
-    demoChart,
-    demoCircle,
+    demoChart: require('@/views/charts/demoChart.vue').default,
+    demoCircle: require('@/views/charts/demoCircle.vue').default,
+    demoBar: require('@/views/charts/demoBar.vue').default,
     chThemeBtn
   },
   computed: {

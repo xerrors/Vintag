@@ -404,7 +404,7 @@ $font_light: rgb(255, 255, 255);
   }
   .title {
     margin: 0 auto;
-    width: 70px;
+    width: 75px;
   }
   .other-methods {
     width: 100%;
