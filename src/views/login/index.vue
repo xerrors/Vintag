@@ -134,7 +134,6 @@ export default {
             })
             .catch(err => {
               this.loading = false;
-              this.$message.error(err);
             });
         } else {
           this.$message.error("用户信息格式错误！");

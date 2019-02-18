@@ -195,10 +195,6 @@ export default {
             this.$message.error("您需阅读服务条款方可完成注册。");
             return;
           }
-          // this.$message({
-          //   message: "功能开发中。。。",
-          //   type: "warning"
-          // });
           this.loading = true;
           this.$store
             .dispatch("Register", this.userForm)
@@ -431,7 +427,7 @@ $font_light: rgb(255, 255, 255);
     width: 100%;
   }
 }
-@media (min-width: 1250px) {
+@media (min-width: 1251px) {
   .register-form {
     position: relative;
     left: 45px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="charts chart-left">
+  <div ref="chart" class="charts chart-left">
     <div id="demoCircle" style=" width:100%; height:100%;"/>
   </div>
 </template>
@@ -51,6 +51,30 @@ export default {
       });
     },
     options() {
+      let series = {
+        type: this.chartType,
+        name: this.chartdata.title,
+        data: this.innerData,
+        radius: "40%",
+        roseType: "radius"
+      }
+      if(this.$refs.chart.offsetwidth > 200 && this.$refs.chart.offsetHeight > 300){
+        series.label = {
+            normal: {
+              formatter: "   {b|{b}}   {hr|}\n  {per|{d}%}  ",
+              borderColor: "#aaa",
+              borderWidth: 1,
+              borderRadius: 4,
+              rich: {
+                b: {
+                  fontSize: 14,
+                  padding: [4, 4]
+                },
+                per: {padding: [4, 4]}
+              }
+            }
+          }
+      }
       return {
         title: {
           text: this.chartdata.title,
@@ -74,28 +98,7 @@ export default {
         tooltip: {
           trigger: "item"
         },
-        series: {
-          type: this.chartType,
-          name: this.chartdata.title,
-          data: this.innerData,
-          radius: "40%",
-          roseType: "radius",
-          label: {
-            normal: {
-              formatter: "   {b|{b}}   {hr|}\n  {per|{d}%}  ",
-              borderColor: "#aaa",
-              borderWidth: 1,
-              borderRadius: 4,
-              rich: {
-                b: {
-                  fontSize: 14,
-                  padding: [4, 4]
-                },
-                per: {padding: [4, 4]}
-              }
-            }
-          }
-        }
+        series: series
       };
     }
   },

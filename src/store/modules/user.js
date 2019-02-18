@@ -1,5 +1,6 @@
 import { getToken, setToken, removeToken, removeTheme } from '@/utils/auth'
-import axios from 'axios'
+// import axios from 'axios'
+import { login, register, getInfo, logout } from '../../api/login'
 
 const user = {
   state: {
@@ -28,12 +29,7 @@ const user = {
     // 注册
     Register({ commit }, userForm) {
       return new Promise((resolve, reject) => {
-        axios.post('/api/register', userForm).then(res => {
-          // 只是演示
-          console.log(res)
-          const data = res.data
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
+        register(userForm).then(() => {
           resolve()
         }).catch(error => {
           reject(error)
@@ -43,21 +39,10 @@ const user = {
     // 登录
     Login({ commit }, userForm) {
       return new Promise((resolve, reject) => {
-        axios({
-          url: '/api/login',
-          method: 'post',
-          data: userForm,
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(res => {
-          console.log(res)
-          const data = res.data
-          if (data.code !== 200) {
-            reject(data.message)
-          } else {
-            setToken(data.token)
-            commit('SET_TOKEN', data.token)
-            resolve()
-          }
+        login(userForm).then(res => {
+          setToken(res.token)
+          commit('SET_TOKEN', res.token)
+          resolve()
         }).catch(error => {
           reject(error)
         })
@@ -67,7 +52,7 @@ const user = {
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        axios.post('getInfo', state.token).then(res => {
+        getInfo(state.token).then(res => {
           console.log(res)
           const data = res.data
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
@@ -87,7 +72,7 @@ const user = {
     // 登出
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
-        axios.post('logout', state.token).then(() => {
+        logout().then(() => {
           commit('SET_TOKEN', '')
           commit('SET_ROLES', [])
           removeToken()
