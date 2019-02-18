@@ -40,7 +40,7 @@
           </el-form-item>
           <!-- 登陆按钮 -->
           <div class="forgot-container">
-            <div class="login-btn" role="button" @click="handleLogin">
+            <div class="login-btn" v-loading="loading" role="button" @click="handleLogin">
               <p>登录</p>
             </div>
             <div class="forgot-passwd" @click="forgotPasswd">
