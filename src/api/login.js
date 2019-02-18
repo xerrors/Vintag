@@ -1,34 +1,31 @@
 import request from '@/utils/request'
-
-export function login(username, password) {
+// 登录
+export function login(userForm) {
   return request({
-    url: '/user/login',
+    url: '/api/login',
     method: 'post',
-    data: {
-      username,
-      password
-    }
+    data: JSON.stringify(userForm)
   })
 }
-
+// 获取用户信息
 export function getInfo(token) {
   return request({
-    url: '/user/info',
+    url: '/api/getInfo',
     method: 'get',
     params: { token }
   })
 }
-
+// 登出
 export function logout() {
   return request({
-    url: '/user/logout',
+    url: '/api/logout',
     method: 'post'
   })
 }
-
+// 注册
 export function register(userForm) {
   return request({
-    url: '/user/register',
+    url: '/api/register',
     method: 'post',
     data: userForm
   })

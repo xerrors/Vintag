@@ -44,7 +44,7 @@ export const constantRouterMap = [
     path: '/database',
     component: Layout,
     redirect: '/database/database_1',
-    name: 'Example',
+    name: 'Database',
     meta: { title: '数据库管理', icon: 'database' },
     children: [
       {
@@ -85,13 +85,13 @@ export const constantRouterMap = [
   },
 
   {
-    path: '/form',
+    path: '/chart',
     component: Layout,
     children: [
       {
         path: 'index',
         name: '管理大屏',
-        component: () => import('@/views/form/index'),
+        component: () => import('@/views/chart/index'),
         meta: {
           title: '管理大屏',
           icon: 'form'

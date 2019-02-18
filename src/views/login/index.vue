@@ -82,26 +82,11 @@
 </template>
 
 <script>
-import { validUsername } from "@/utils/validate";
 import "@/styles/font.scss";
 import axios from "axios";
 export default {
   name: "Login",
   data() {
-    const validateUsername = (rule, value, callback) => {
-      if (!validUsername(value)) {
-        callback(new Error("用户名格式错误"));
-      } else {
-        callback();
-      }
-    };
-    const validatePass = (rule, value, callback) => {
-      if (value.length < 1) {
-        callback(new Error("密码不能为空"));
-      } else {
-        callback();
-      }
-    };
     return {
       bg: require("../../assets/background/login-bg1.jpg"),
       eyeState: "eye-close",
@@ -110,10 +95,8 @@ export default {
         password: ""
       },
       loginRules: {
-        username: [
-          { required: true, trigger: "blur", validator: validateUsername }
-        ],
-        password: [{ required: true, trigger: "blur", validator: validatePass }]
+        username: [{ required: true, trigger: "blur", message: "用户名不能为空" }],
+        password: [{ required: true, trigger: "blur", message: "密码不能为空" }]
       },
       loading: false,
       pwdType: "password",
@@ -151,7 +134,7 @@ export default {
             })
             .catch(err => {
               this.loading = false;
-              console.log(err);
+              this.$message.error(err);
             });
         } else {
           this.$message.error("用户信息格式错误！");

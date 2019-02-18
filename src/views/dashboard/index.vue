@@ -5,7 +5,6 @@
       <ch-theme-btn/>
       <h3>表格界面</h3>
       <el-button type="primary" size="medium" icon="el-icon-caret-right" @click="showCharts">表格展示</el-button>
-      <router-view/>
     </div>
   </div>
 </template>
