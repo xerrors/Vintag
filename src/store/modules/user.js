@@ -1,6 +1,6 @@
 import { getToken, setToken, removeToken, removeTheme } from '@/utils/auth'
 // import axios from 'axios'
-import { login, register, getInfo, logout } from '../../api/login'
+import { login, register, getInfo, logout } from '@/api/login'
 
 const user = {
   state: {
@@ -40,8 +40,9 @@ const user = {
     Login({ commit }, userForm) {
       return new Promise((resolve, reject) => {
         login(userForm).then(res => {
-          setToken(res.token)
-          commit('SET_TOKEN', res.token)
+          const data = res.data
+          setToken(data.token)
+          commit('SET_TOKEN', data.token)
           resolve()
         }).catch(error => {
           reject(error)

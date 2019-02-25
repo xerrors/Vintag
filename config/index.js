@@ -11,13 +11,13 @@ module.exports = {
     assetsPublicPath: '/',
     // 暂时解决跨域访问问题
     proxyTable: {
-      // '/api': {
-      //   target: process.env.BASE_API,
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/api': ''
-      //   }
-      // }
+      '/': {
+        target: process.env.BASE_API,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': ''
+        }
+      }
     },
 
     // Various Dev Server settings

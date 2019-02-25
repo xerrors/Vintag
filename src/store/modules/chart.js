@@ -1,8 +1,8 @@
-import Cookies from 'js-cookie'
+import { setTheme, getTheme } from '@/utils/auth'
 
 const chart = {
   state: {
-    theme: Cookies.get('theme') || 'dark'
+    theme: getTheme('theme') || 'dark'
   },
   mutations: {
     changeTheme: (state, payload) => {
@@ -12,7 +12,7 @@ const chart = {
   actions: {
     changeTheme: (context, payload) => {
       context.commit('changeTheme', payload)
-      Cookies.set('theme', payload)
+      setTheme('theme', payload)
     }
   }
 }

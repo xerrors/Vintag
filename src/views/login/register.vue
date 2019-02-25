@@ -375,18 +375,18 @@ $font_light: rgb(255, 255, 255);
     }
   }
 }
-@media (max-height: 1200px) and (max-width: 1250px) {
+@media (max-height: 1000px) {
   .register-container {
     height: 1200px;
   }
 }
-@media (max-height: 1200px) and (min-width: 1250px) {
-  .register-container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-  }
-}
+// @media (max-height: 1200px) and (min-width: 1250px) {
+//   .register-container {
+//     position: fixed;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
 @media (min-height: 1200px) {
   .register-container {
     position: fixed;

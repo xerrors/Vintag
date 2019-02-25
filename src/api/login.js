@@ -37,7 +37,8 @@ export function register(userForm) {
       for (item in data) {
         ret += encodeURIComponent(item) + '=' + encodeURIComponent(data[item]) + '&'
       }
-      return ret.Substring(0, ret.Length - 1)
+      ret = ret.substring(0, ret.length - 1)
+      return ret
     }],
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
