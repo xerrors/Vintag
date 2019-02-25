@@ -20,29 +20,16 @@ export default {
   },
   computed: {
     chartdata() {
-      return randomData();
+      return randomData(2, 1);
     },
     theme() {
       return this.$store.getters.theme;
-    },
-    axis() {
-      var axisData = this.chartdata.axis;
-      let axis = {};
-      axis.data = [];
-      if (axisData.x.length != 0) {
-        axis.data = axisData.x;
-      } else {
-        for (var i = 1; i <= this.chartdata.dataLength; i++) {
-          axis.data.push(i);
-        }
-      }
-      return axis;
     },
     innerData() {
       var data = [{}];
       for (var i = 0; i < this.chartdata.legendLen; i++) {
         let tempData = {};
-        tempData.value = this.chartdata.data[i][1];
+        tempData.value = this.chartdata.data[i][0];
         tempData.name = this.chartdata.legend[i];
         data.push(tempData);
       }
@@ -56,24 +43,19 @@ export default {
         name: this.chartdata.title,
         data: this.innerData,
         radius: "40%",
-        roseType: "radius"
-      }
-      if(this.$refs.chart.offsetwidth > 200 && this.$refs.chart.offsetHeight > 300){
-        series.label = {
-            normal: {
-              formatter: "   {b|{b}}   {hr|}\n  {per|{d}%}  ",
-              borderColor: "#aaa",
-              borderWidth: 1,
-              borderRadius: 4,
-              rich: {
-                b: {
-                  fontSize: 14,
-                  padding: [4, 4]
-                },
-                per: {padding: [4, 4]}
-              }
+        roseType: "radius",
+        label: {
+          normal: {
+            formatter: "   {b|{b}}   {hr|}\n  {per|{d}%}  ",
+            rich: {
+              b: {
+                fontSize: 14,
+                padding: [4, 4]
+              },
+              per: { padding: [4, 4] }
             }
           }
+        }
       }
       return {
         title: {
@@ -81,13 +63,12 @@ export default {
           top: "3%",
           left: "3%",
           radius: "55%",
-          center: ["50%", "50%"]
+          center: ["50%", "70%"]
         },
         legend: {
-          x: "right",
+          x: "center",
           data: this.chartdata.legend,
-          top: "3%",
-          right: "3%"
+          bottom: "3%"
         },
         grid: {
           left: "3%",

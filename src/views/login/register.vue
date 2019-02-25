@@ -269,12 +269,8 @@ $font_light: rgb(255, 255, 255);
   .sub-container {
     width: 80%;
     height: 800px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 0 auto;
+    padding-top: 100px;
     // flex 布局
     display: -webkit-flex; /* Safari */
     display: flex;
@@ -375,26 +371,11 @@ $font_light: rgb(255, 255, 255);
     }
   }
 }
-@media (max-height: 1000px) {
+
+@media (max-width: 1250px) {
   .register-container {
     height: 1200px;
   }
-}
-// @media (max-height: 1200px) and (min-width: 1250px) {
-//   .register-container {
-//     position: fixed;
-//     width: 100%;
-//     height: 100%;
-//   }
-// }
-@media (min-height: 1200px) {
-  .register-container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (max-width: 1250px) {
   .register-form {
     min-width: 250px;
   }
@@ -428,6 +409,9 @@ $font_light: rgb(255, 255, 255);
   }
 }
 @media (min-width: 1251px) {
+  .register-container {
+    height: 1100px;
+  }
   .register-form {
     position: relative;
     left: 45px;

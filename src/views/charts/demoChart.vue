@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     chartdata() {
-      return randomData();
+      return randomData(2, 5);
     },
     axis() {
       var axisData = this.chartdata.axis

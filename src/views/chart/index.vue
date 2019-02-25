@@ -3,18 +3,18 @@
     <div class="chart-container">
       <div class="left">
         <demo-chart class="left1"/>
-        <demo-chart class="left2"/>
+        <demo-circle class="left2"/>
         <div class="left3">
-          <demo-chart class="left3__chart"/>
-          <demo-chart class="left3__chart"/>
-          <demo-chart class="left3__chart"/>
-          <demo-chart class="left3__chart"/>
+          <chart-templete class="left3__chart"/>
+          <chart-templete class="left3__chart"/>
+          <chart-templete class="left3__chart"/>
+          <chart-templete class="left3__chart"/>
         </div>
       </div>
       <div class="center"/>
       <div class="right">
         <demo-circle class="chart1"/>
-        <demo-chart class="chart2"/>
+        <user-board class="chart2"/>
         <demo-bar class="chart3"/>
       </div>
     </div>
@@ -30,6 +30,9 @@ export default {
     demoChart: require('@/views/charts/demoChart.vue').default,
     demoCircle: require('@/views/charts/demoCircle.vue').default,
     demoBar: require('@/views/charts/demoBar.vue').default,
+    demoMap: require('@/views/charts/demoMap.vue').default,
+    chartTemplete: require('@/views/charts/chartTemplete.vue').default,
+    userBoard: require('@/views/charts/userBoard.vue').default,
     chThemeBtn
   },
   computed: {

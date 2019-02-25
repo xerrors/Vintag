@@ -1,4 +1,4 @@
-export function randomData() {
+export function randomData(le, da) {
   var randData = {}
   // 标题
   // 随机化生成图表标题
@@ -6,14 +6,14 @@ export function randomData() {
   // 图例
   // 随机化生成图例个数
   randData.legend = []
-  randData.legendLen = Math.floor((Math.random() * 3 + 2))
+  randData.legendLen = Math.floor((Math.random() * 3 + le))
   for (var x = 1; x <= randData.legendLen; x++) {
     randData.legend.push('数据' + x)
   }
   // 数据
   // 随机化生成数据个数以及数据
   randData.data = []
-  randData.dataLength = Math.floor((Math.random() * 5 + 4))
+  randData.dataLength = Math.floor((Math.random() * 5 + da))
   for (var i = 0; i < randData.legendLen; i++) {
     var data = []
     for (var j = 0; j < randData.dataLength; j++) {
