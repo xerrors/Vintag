@@ -12,7 +12,7 @@ const chart = {
   actions: {
     changeTheme: (context, payload) => {
       context.commit('changeTheme', payload)
-      setTheme('theme', payload)
+      setTheme(payload)
     }
   }
 }

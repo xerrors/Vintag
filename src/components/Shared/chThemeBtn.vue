@@ -1,10 +1,10 @@
 <template>
-  <el-radio-group v-model="theme" size="medium">
-    <el-radio-button label="shine"/>
-    <el-radio-button label="vintage"/>
-    <el-radio-button label="dark"/>
-    <el-radio-button label="macarons"/>
-  </el-radio-group>
+  <el-switch
+    v-model="theme"
+    active-text="dark"
+    inactive-text="light"
+    active-value="dark"
+    inactive-value="light"/>
 </template>
 
 <script>

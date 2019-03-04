@@ -13,15 +13,11 @@ import router from './router'
 import store from './store'
 import '@/icons' // icon
 import '@/permission' // permission control
-import VueParticles from 'vue-particles'
 
 // 引入主题文件
-import 'echarts/theme/macarons'
-import 'echarts/theme/vintage'
+import 'echarts/theme/light'
 import 'echarts/theme/dark'
-import 'echarts/theme/shine'
 
-Vue.use(VueParticles)
 Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
