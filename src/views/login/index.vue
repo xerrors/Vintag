@@ -1,5 +1,5 @@
 <template>
-  <div class="login-container" :style="{ backgroundImage: 'url(' +bg + ')'}" >
+  <div class="login-container" :style="{ backgroundImage: 'url(' +bg + ')'}">
     <div class="inner"/>
     <div class="sub-container">
       <div class="login-form">
@@ -11,11 +11,10 @@
           label-position="left"
         >
           <!-- 标题 -->
-          <p class="title">LOG IN
-            <br>请登录
-          </p>
+          <p class="title en">LOG IN</p>
+          <p class="title cn">请登录</p>
           <!-- 用户名 -->
-          <el-form-item prop="username">
+          <el-form-item prop="username" class="el-form-login">
             <el-input
               v-model.trim="loginForm.username"
               name="username"
@@ -25,7 +24,7 @@
             />
           </el-form-item>
           <!-- 密码 -->
-          <el-form-item prop="password">
+          <el-form-item prop="password" class="el-form-login">
             <el-input
               :type="pwdType"
               v-model.trim="loginForm.password"
@@ -95,7 +94,9 @@ export default {
         password: ""
       },
       loginRules: {
-        username: [{ required: true, trigger: "blur", message: "用户名不能为空" }],
+        username: [
+          { required: true, trigger: "blur", message: "用户名不能为空" }
+        ],
         password: [{ required: true, trigger: "blur", message: "密码不能为空" }]
       },
       loading: false,
@@ -158,7 +159,7 @@ export default {
     register() {
       // this.$emit("changeLoginState");
       // this.$message("功能开发中！");
-      this.$router.push('/register')
+      this.$router.push("/register");
     }
   }
 };
@@ -196,6 +197,34 @@ $place-holder: rgb(77, 76, 76);
     }
   }
 }
+@media (max-width: 1250px) {
+  .login-container {
+    .el-input {
+      height: 66px;
+      input {
+        font-size: 14px;
+        height: 50px;
+      }
+      input::-webkit-input-placeholder,
+      textarea::-webkit-input-placeholder {
+        color: $place-holder;
+        font-size: 12px;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+@media (max-width: 1250px) {
+  .el-form-login {
+    .el-form-item__error {
+      position: absolute;
+      top: 100%;
+      left: 50px !important;
+    }
+  }
+}
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -230,23 +259,35 @@ $font_light: rgb(255, 255, 255);
       min-width: 400px;
       height: 423px;
       .title {
-        margin: 20px 0px;
-        font-size: 38px;
         font-family: "SourceHanSerifCN";
         color: $font_light;
-        font-weight: bold;
-        line-height: 1.237;
         opacity: 0;
         animation: slideUp 1s forwards;
       }
+      .cn {
+        margin-top: 5px;
+      }
+      .en {
+        margin-bottom: 5px;
+      }
       .el-form-item {
+        position: relative;
         margin-bottom: 30px;
         opacity: 0;
         animation: slideUp 1s 0.2s forwards;
       }
       .show-pwd {
-        position: relative;
-        left: -60px;
+        position: absolute;
+        width: 40px;
+        right: 120px;
+        margin-top: auto;
+        margin-bottom: auto;
+        @media (min-width: 1250px) {
+          top: 10px;
+        }
+        @media (max-width: 1250px) {
+          right: 60px;
+        }
         top: 5px;
         font-size: 30px;
         color: $dark_gray;
@@ -256,6 +297,10 @@ $font_light: rgb(255, 255, 255);
         background-color: $theme_blue;
         width: 117px;
         height: 43px;
+        @media (max-width: 1250px) {
+          width: 100px;
+          height: 38px;
+        }
         p {
           margin: 0 0;
           position: relative;
@@ -264,6 +309,10 @@ $font_light: rgb(255, 255, 255);
           font-family: "SourceHanSansSC";
           color: rgb(255, 255, 255);
           line-height: 43px;
+          @media (max-width: 1250px) {
+            font-size: 14px;
+            line-height: 38px;
+          }
         }
         cursor: pointer;
         transition: box-shadow 0.2s ease-out;
@@ -297,6 +346,9 @@ $font_light: rgb(255, 255, 255);
           font-family: "SourceHanSansSC";
           color: $font-light;
           cursor: pointer;
+          @media (max-width: 1250px) {
+            font-size: 10px;
+          }
         }
         &:hover {
           p {
@@ -316,7 +368,6 @@ $font_light: rgb(255, 255, 255);
         font-size: 29px;
         font-family: "SourceHanSerifCN";
         color: $font_light;
-        font-weight: bold;
         line-height: 1.621;
         margin: 40px 60px 40px 60px;
       }
@@ -355,13 +406,45 @@ $font_light: rgb(255, 255, 255);
       }
       opacity: 0;
       animation: slideUp 1s 0.5s forwards;
+      text-align: center;
     }
   }
 }
 @media (max-width: 1250px) {
+  .el-form-item {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
   .login-form {
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
+    margin: 0 auto;
+    .title {
+      margin: 20px 0px;
+      text-align: center;
+      line-height: 1;
+    }
+    .cn {
+      font-size: 33px;
+      margin-bottom: 40px;
+    }
+    .en {
+      font-size: 27px;
+    }
+    .el-input {
+      height: 66px;
+      width: 80%;
+      display: inline-block;
+      input {
+        font-size: 16px;
+      }
+    }
+    .forgot-container {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
   .login-methods {
     display: none;
@@ -380,6 +463,10 @@ $font_light: rgb(255, 255, 255);
     border: 0px solid;
     border-right-color: rgb(191, 191, 191);
     border-right-width: 1px;
+    .title {
+      font-size: 38px;
+      line-height: 1.237;
+    }
   }
 }
 @keyframes moveup {

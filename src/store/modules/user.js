@@ -1,13 +1,15 @@
 import { getToken, setToken, removeToken, removeTheme } from '@/utils/auth'
 // import axios from 'axios'
 import { login, register, getInfo, logout } from '@/api/login'
+import { getData } from '@/api/data'
 
 const user = {
   state: {
     token: getToken(),
     name: '',
     avatar: '',
-    roles: ''
+    roles: '',
+    data: {}
   },
 
   mutations: {
@@ -22,6 +24,9 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
+    },
+    SET_DATA: (state, data) => {
+      state.data = data
     }
   },
 
@@ -64,6 +69,20 @@ const user = {
           }
           commit('SET_NAME', data.name)
           commit('SET_AVATAR', data.avatar)
+          resolve(res)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 获取数据
+    GetData({ commit, state }) {
+      return new Promise((resolve, reject) => {
+        getData(state.token).then(res => {
+          console.log(res)
+          const data = res.data.data
+          commit('SET_DATA', data)
           resolve(res)
         }).catch(error => {
           reject(error)

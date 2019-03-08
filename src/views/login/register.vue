@@ -267,7 +267,7 @@ $font_light: rgb(255, 255, 255);
   width: 100%;
   background-color: rgb(20, 20, 20);
   .sub-container {
-    width: 80%;
+    width: 75%;
     height: 800px;
     margin: 0 auto;
     padding-top: 100px;
@@ -286,7 +286,6 @@ $font_light: rgb(255, 255, 255);
       opacity: 0;
       animation: slideUp 1s 0.1s forwards;
       .method-container {
-        height: 50px;
         display: flex;
         align-items: center;
       }
@@ -315,7 +314,6 @@ $font_light: rgb(255, 255, 255);
           font-size: 34px;
         }
         font-family: "SourceHanSerifCN";
-        font-weight: bold;
         opacity: 0;
         animation: slideUp 1s forwards;
       }
@@ -325,6 +323,7 @@ $font_light: rgb(255, 255, 255);
         animation: slideUp 1s 0.2s forwards;
         p {
           margin: 0px;
+          line-height: 16px; 
         }
       }
       .show-pwd {
@@ -385,7 +384,7 @@ $font_light: rgb(255, 255, 255);
   }
   .other-methods {
     width: 100%;
-    height: 180px;
+    height: 120px;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -396,6 +395,8 @@ $font_light: rgb(255, 255, 255);
     .method-container {
       width: 100%;
       margin-left: 20px;
+      height: 30px;
+      font-size: 12px;
     }
     .right {
       display: none;
@@ -430,6 +431,9 @@ $font_light: rgb(255, 255, 255);
     border: 0px solid;
     border-left-color: rgb(52, 128, 255);
     border-left-width: 5px;
+    .method-container {
+      height: 50px;
+    }
     p {
       margin-left: 40px;
     }

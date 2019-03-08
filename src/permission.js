@@ -23,6 +23,7 @@ router.beforeEach((to, from, next) => {
             next({ path: '/' })
           })
         })
+        store.dispatch('GetData')
       } else {
         next()
       }

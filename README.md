@@ -11,17 +11,15 @@
 
 ```json
 {
-   title: String,
-   legend: Array,
-   legendLen: Number,
-   dataLength: Number,
-   axis: {
-      x: Array | null,
-      y: Array | null
+   "title": "String",
+   "legend": "Array",
+   "axis": {
+      "x": "Array" | null,
+      "y": "Array" | null
    },
-   data: [
-      Array,
-      Array,
+   "data": [
+      "Array",
+      "Array",
       ...
    ]
 }

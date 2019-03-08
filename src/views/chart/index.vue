@@ -2,20 +2,20 @@
   <div class="container">
     <div class="chart-container">
       <div class="left">
-        <demo-chart class="left1"/>
-        <demo-circle class="left2"/>
+        <chart-a class="left1"/>
+        <chart-b class="left2"/>
         <div class="left3">
-          <chart-templete class="left3__chart"/>
-          <chart-templete class="left3__chart"/>
-          <chart-templete class="left3__chart"/>
-          <chart-templete class="left3__chart"/>
+          <chart-c class="left3__chart"/>
+          <chart-d class="left3__chart"/>
+          <chart-e class="left3__chart"/>
+          <chart-f class="left3__chart"/>
         </div>
       </div>
       <div class="center"/>
       <div class="right">
-        <demo-circle class="chart1"/>
+        <chart-g class="chart1"/>
         <user-board class="chart2"/>
-        <demo-bar class="chart3"/>
+        <chart-h class="chart3"/>
       </div>
     </div>
   </div>
@@ -24,21 +24,21 @@
 <script>
 /* eslint-disable */
 import chThemeBtn from "@/components/Shared/chThemeBtn";
-import { randomData } from "@/randomData.js";
 export default {
   components: {
-    demoChart: require('@/views/charts/demoChart.vue').default,
-    demoCircle: require('@/views/charts/demoCircle.vue').default,
-    demoBar: require('@/views/charts/demoBar.vue').default,
-    demoMap: require('@/views/charts/demoMap.vue').default,
-    chartTemplete: require('@/views/charts/chartTemplete.vue').default,
+    chartA: require('@/views/charts/chart1.vue').default,
+    chartB: require('@/views/charts/chart2.vue').default,
+    chartC: require('@/views/charts/chart3.vue').default,
+    chartD: require('@/views/charts/chart4.vue').default,
+    chartE: require('@/views/charts/chart5.vue').default,
+    chartF: require('@/views/charts/chart6.vue').default,
+    chartG: require('@/views/charts/chart7.vue').default,
+    chartH: require('@/views/charts/chart8.vue').default,
+    chartI: require('@/views/charts/chart9.vue').default,
     userBoard: require('@/views/charts/userBoard.vue').default,
     chThemeBtn
   },
   computed: {
-    chartdata() {
-      return randomData();
-    },
     theme() {
       return this.$store.getters.theme;
     }
