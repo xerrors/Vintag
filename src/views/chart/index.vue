@@ -14,8 +14,7 @@
       <div class="center"/>
       <div class="right">
         <chart-g class="chart1"/>
-        <user-board class="chart2"/>
-        <chart-h class="chart3"/>
+        <chart-i class="chart3"/>
       </div>
     </div>
   </div>
@@ -125,11 +124,7 @@ $chart-width: 600px;
   align-content: space-between;
   margin: 0 30px;
   .chart1 {
-    width: 500px;
-    height: 610px;
-  }
-  .chart2 {
-    width: 270px;
+    width: 100%;
     height: 610px;
   }
   .chart3 {

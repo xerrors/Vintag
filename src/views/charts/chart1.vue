@@ -1,87 +1,64 @@
 <template>
-  <div class="charts chart-left">
-    <div id="demoBar" style=" width:100%; height:100%;"/>
+  <div class="charts">
+    <div id="chart8" style=" width:100%; height:100%;"/>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
 import echarts from "echarts";
-import { randomData } from "@/randomData.js";
 export default {
-  // props: ['chartdata'],
-  name: "demoBar",
-  components: {},
+  name: "chart8",
   data() {
     return {
       chart: null,
-      chartType: "bar",
     };
   },
   computed: {
-    chartdata() {
-      return randomData(3, 5);
-    },
-    axis() {
-      var axisData = this.chartdata.axis
-      var axis = {
-        x: {},
-        y: {}
-      }
-      axis.x.data = []
-      if(axisData.x.length != 0) {
-        axis.x.data = axisData.x
-      } else {
-        for(var i = 1; i <= this.chartdata.dataLength; i++){
-          axis.x.data.push(i)
-        }
-      }
-      if(axisData.y.length != 0) {
-        axis.y.data = axisData.y
-      } else {
-        axis.y = {}
-      }
-      return axis
-    },
     theme() {
       return this.$store.getters.theme;
-    },
-    mySeries() {
-      var mySeries = [];
-      for (var i = 0; i < this.chartdata.legendLen; i++) {
-        mySeries.push({
-          type: this.chartType,
-          name: this.chartdata.legend[i],
-          data: this.chartdata.data[i]
-        });
-      }
-      return mySeries;
     },
     options() {
       return {
         title: {
-          text: "对比统计图",
+          text: "中国中车各月的平均总额(万)",
           top: "3%",
-          left: "3%"
+          left: "3%",
         },
         legend: {
           x: "right",
-          data: this.chartdata.legend,
           top: "3%",
           right: "3%"
         },
         grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
+          left: "3%",
+          right: "4%",
+          bottom: "3%",
+          containLabel: true
         },
         tooltip: {
           trigger: "axis"
         },
-        xAxis: this.axis.x,
-        yAxis: this.axis.y,
-        series: this.mySeries
+        dataset: {
+        source: [
+                ["month", "2016", "2017", "2018"],
+                ["1月", 31423.14, 40313.21, 41513.36],
+                ["2月", 39114.15, 38114.12, 37914.35],
+                ["3月", 35415.41, 37025.54, 36405.51],
+                ["4月", 37201.41, 40101.31, 38901.81],
+                ["5月", 35108.15, 39108.25, 42108.65],
+                ["6月", 36126.16, 40106.83, 50106.36],
+                ["7月", 37411.11, 40124.26, 42518.31],
+                ["8月", 40212.41, 41110.01, 33508.41],
+                ["9月", 36011.54, 36899.47, 37891.49],
+                ["10月", 42012.45, 43011.13, 44022.15],
+                ["11月", 37015.23, 41210.19, 36014.14],
+                ["12月", 27355.33, 38261.73, 28365.93]
+        ]
+    },
+        xAxis: { type: "category" },
+        yAxis: {},
+        series: [{ type: "bar" }, { type: "bar" }, { type: "bar" }]
       };
     }
   },
@@ -95,7 +72,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      this.drawGraph("demoBar");
+      this.drawGraph("chart8");
     });
   }
 };
