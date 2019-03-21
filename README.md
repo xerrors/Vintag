@@ -1,9 +1,11 @@
 # Vintag
 
-`Date: 2019/1/21`
+`Date: 2019/3/21`
 [DemoLink](http://www.xerrors.fun)
 
 模板来自于：[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template/tree/master/src)
+
+本项目已经 gg 故开源纪念下自己的那些不眠之夜
 
 ## 具体内容
 
