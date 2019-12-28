@@ -1,7 +1,6 @@
 # Vintag
 
 `Date: 2019/3/21`
-[DemoLink](http://www.xerrors.fun)
 
 模板来自于：[vue-admin-template](https://github.com/PanJiaChen/vue-admin-template/tree/master/src)
 
